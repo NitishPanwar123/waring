@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<form xmlns="http://www.demandware.com/xml/form/2008-04-19">
+
+	<!-- shipments -->
+	<list formid="shipments">
+		<!-- products -->
+		<list formid="items" binding="productLineItems">
+			<field formid="quantity" type="number" binding="quantityValue" format="0.#"/>
+			<action formid="editLineItem" valid-form="false"/>
+			<action formid="deleteProduct" valid-form="false"/>
+			<action formid="addToWishList" valid-form="false"/>
+			<action formid="addToGiftRegistry" valid-form="false"/>
+		</list>
+	
+		<!-- gift certificates -->
+		<list formid="giftcerts" binding="giftCertificateLineItems">
+			<action formid="deleteGiftCertificate" valid-form="false"/>
+		</list>
+	</list>
+
+	<!-- coupons -->
+	<list formid="coupons">
+		<action formid="deleteCoupon" valid-form="false"/>
+	</list>
+
+	<field formid="couponCode" type="string" mandatory="false"/>
+	<field formid="forPurpose" type="string" mandatory="true" >
+        <options>
+            <option label="checkout.shipment.business" value="Business" />
+            <option label="checkout.shipment.home" value="Home" />
+        </options> 
+    </field>
+    <field formid="deliverylocation" label="label.input.addressid" type="string"  mandatory="true"
+    	   max-length="20" missing-error="error.message.required" binding="deliverylocation" range-error="error.message.20orless"/>
+    <field formid="firstName" label="label.input.firstname.profile" type="string" mandatory="true" binding="firstName"
+           max-length="50" missing-error="address.firstname.missing" range-error="error.message.50orless"/>
+    <field formid="lastName" label="label.input.lastname.profile" type="string" mandatory="true" binding="lastName" max-length="50"
+           missing-error="address.lastname.missing" range-error="error.message.50orless"/>
+    <field formid="contactnumber" label="label.input.address1" type="number" mandatory="true" binding="contactnumber" max-length="50"
+           missing-error="address.address1.missing" range-error="error.message.50orless"/>
+    <field formid="Dock" type="string" mandatory="true" >
+        <options>
+            <option label="Yes" value="True" />
+            <option label="No" value="False" />
+        </options>
+    </field>
+    <field formid="acoustic2" label="Click here to receive Waring updates, exclusive promotions and recipes!" type="boolean" mandatory="false" /> 
+	<action formid="submit" valid-form="true"/>
+	<!-- functional buttons -->
+	<action formid="calculateTotal" valid-form="false"/>
+	<action formid="addCoupon" valid-form="false"/>
+	<action formid="updateCart" valid-form="false"/>
+	<action formid="checkoutCart" valid-form="false"/>
+	<action formid="continueShopping" valid-form="false"/>
+	<action formid="register" valid-form="false"/>
+	<action formid="unregistered" valid-form="false"/>
+	<action formid="logout" valid-form="false"/>
+</form>

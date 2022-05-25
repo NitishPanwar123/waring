@@ -419,7 +419,7 @@ input[id="dwfrm_cart_forPurpose"]{
 			height:10vw;
 		}
 		.form-indent{
-	    	width: 69vw;
+	    	width: 84vw;
 		}
 	}
 	@media only screen and (min-width:401px) and (max-width:470px){
@@ -480,9 +480,9 @@ input[id="dwfrm_cart_forPurpose"]{
     		/* left: 13em;
     		top: 14.2em; */
 		}
-		.form-indent {
+		/* .form-indent {
     		width: 69vw;
-		}
+		} */
 	}
 	@media only screen and (min-width:320px) and (max-width:400px){
 		/* .tbodyBorder{
@@ -531,9 +531,9 @@ input[id="dwfrm_cart_forPurpose"]{
     		/* top: 14.4em;
     		left: 12.6em; */
 		}
-		.form-indent {
+		/* .form-indent {
     		width: 84vw;
-		}
+		} */
 
 	}
 	@media only screen and (min-width:320px) and (max-width:767px){

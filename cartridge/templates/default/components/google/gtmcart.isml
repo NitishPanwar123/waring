@@ -1,0 +1,15 @@
+<!--- TEMPLATENAME: gtmcart.isml --->
+<isif condition="${!empty(pdict.Basket)}">
+<script>
+(function(){
+	var GTMproducts=[];
+	<isloop var="pli" items="${pdict.Basket.allProductLineItems}"><isinclude template="components/google/gtmpli"/></isloop>
+	var dataLayer = window.dataLayer || [];
+	dataLayer.push({
+		'event': 'checkout',
+		'ecommerce': { 'checkout': {
+			'actionField': {'step': 1},
+			'products': GTMproducts
+	}}});
+})();</script>
+</isif>

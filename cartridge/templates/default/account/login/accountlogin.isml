@@ -1,0 +1,80 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isdecorate template="account/pt_account">
+<isinclude template="util/modules"/>
+
+	<iscomment><h1>${Resource.msg('account.header','account',null)} ${Resource.msg('global.login','locale',null)}</h1></iscomment>
+
+	<iscomment>Heading</iscomment>
+	<div class="headingMainDiv">
+		<div class="headingInnerDivLeft">
+			<p class="headingInnerDivLeftText"> </p>
+		</div>
+
+		<div class="headingInnerDivCenter">
+			<p class="headlineLarge headingInnerDivCenterText">Checkout</p>
+		</div>
+
+		<div class="headingInnerDivRight">
+			<button onclick="location.href = 'https://www.waringcommercialproducts.com/';" class="secondaryButton headingInnerDivRightButton">
+				BACK
+			</button>
+		</div>
+	</div>
+
+	<div class="loginContentCenter">
+		<p class="loginText">Log In</p>
+
+		<div class="loginContentDiv">
+			<isinclude template="account/login/logininclude"/>
+			
+			<div class="loginHrLineDiv">
+				<hr class="loginHrLine"></hr>
+			</div>
+			<p class="signupText">Sign Up</p>
+
+			<form action="${URLUtils.httpsContinue()}" method="post" id="${pdict.CurrentForms.login.htmlName}_register">
+				<fieldset>
+					<div class="form-row form-row-button signupButtonCenter">
+						<button class="primaryButton" type="submit" value="${Resource.msg('global.createbutton','locale',null)}" name="${pdict.CurrentForms.login.register.htmlName}">
+							${Resource.msg('global.createnowbutton','locale',null)}
+						</button>
+					</div>
+					<input type="hidden" name="${dw.web.CSRFProtection.getTokenName()}" value="${dw.web.CSRFProtection.generateToken()}"/>
+				</fieldset>
+			</form>
+
+		</div>
+	</div><!-- END: page column -->
+
+
+<iscomment>
+	<div class="col-2">
+
+		<div class="login-box login-create-account clearfix">
+
+			<h2>${Resource.msg('globalaccount.createheader','locale',null)}</h2>
+
+			<div class="login-box-content clearfix">
+				<p>${Resource.msg('globalaccount.createmessage','locale',null)}</p>
+
+				<form action="${URLUtils.httpsContinue()}" method="post" id="${pdict.CurrentForms.login.htmlName}_register">
+					<fieldset>
+						<div class="form-row form-row-button">
+							<button type="submit" value="${Resource.msg('global.createbutton','locale',null)}" name="${pdict.CurrentForms.login.register.htmlName}">
+								${Resource.msg('global.createnowbutton','locale',null)}
+							</button>
+						</div>
+						<input type="hidden" name="${dw.web.CSRFProtection.getTokenName()}" value="${dw.web.CSRFProtection.generateToken()}"/>
+					</fieldset>
+				</form>
+
+				<iscontentasset aid="create-account-benefits"/>
+
+			</div>
+
+		</div>
+
+	</div><!-- END: page column -->
+</iscomment>
+
+</isdecorate>

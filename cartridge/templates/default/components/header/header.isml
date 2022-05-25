@@ -1,0 +1,507 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+
+<iscomment> CSS for Clickable Header Logo which redirects to waring com site</iscomment>
+<style>
+@media only screen and (max-width: 360px) {
+	.clickableHeaderLogo{
+    display: block;
+    width: 87px;
+    height: 46px;
+    position: absolute;
+    left: 8px;
+    top: 0px;
+  }
+}
+@media only screen and (max-width: 480px) and (min-width: 361px) {
+	.clickableHeaderLogo{
+    display: block;
+    width: 102px;
+    height: 52px;
+    position: absolute;
+    left: 6px;
+    top: 0px;
+  }
+}
+@media only screen and (max-width: 540px) and (min-width: 481px) {
+	.clickableHeaderLogo{
+    display: block;
+    width: 121px;
+    height: 58px;
+    position: absolute;
+    left: 8px;
+    top: 0px;
+  }
+}
+@media only screen and (max-width: 640px) and (min-width: 541px) {
+	.clickableHeaderLogo{
+    display: block;
+    width: 128px;
+    height: 74px;
+    position: absolute;
+    left: 18px;
+    top: 0px;
+  }
+}
+@media only screen and (max-width: 768px) and (min-width: 641px) {
+	.clickableHeaderLogo{
+    display: block;
+    width: 151px;
+    height: 85px;
+    position: absolute;
+    left: 25px;
+    top: 0px;
+  }
+}
+@media only screen and (max-width: 960px) and (min-width: 769px) {
+	.clickableHeaderLogo{
+    display: block;
+    width: 126px;
+    height: 56px;
+    position: absolute;
+    left: 107px;
+    top: 0px;
+  }
+}
+@media only screen and (max-width: 1024px) and (min-width: 961px) {
+	.clickableHeaderLogo{
+    display: block;
+    width: 130px;
+    height: 66px;
+    position: absolute;
+    left: 129px;
+    top: 0px;
+  }
+}
+@media only screen and (max-width: 1280px) and (min-width: 1025px) {
+	.clickableHeaderLogo{
+    display: block;
+    width: 168px;
+    height: 75px;
+    position: absolute;
+    left: 147px;
+    top: 0px;
+  }
+}
+@media only screen and (max-width: 1360px) and (min-width: 1281px) {
+	.clickableHeaderLogo{
+    display: block;
+    width: 161px;
+    height: 83px;
+    position: absolute;
+    left: 166px;
+    top: 0px;
+  }
+}
+@media only screen and (max-width: 1600px) and (min-width: 1361px) {
+	.clickableHeaderLogo{ 
+    display: block;
+    width: 219px;
+    height: 91px;
+    position: absolute;
+    left: 172px;
+    top: 0px;
+  }
+}
+@media only screen and (max-width: 1920px) and (min-width: 1601px) {
+	.clickableHeaderLogo{
+    display: block;
+    width: 227px;
+    height: 106px;
+    position: absolute;
+    left: 238px;
+    top: 0px;
+  }
+}
+@media only screen and (min-width: 1921px) {
+	.clickableHeaderLogo{
+    display: block;
+    width: 318px;
+    height: 137px;
+    position: absolute;
+    left: 277px;
+    top: 0px;
+  }
+}
+</style>
+<div style="overflow:visible;position:relative"> 
+  <picture>
+    <source width="100%" media="(max-width:360px)" srcset="${URLUtils.staticURL('/images/waringcommercialproducts-checkout-header-small.png')}">
+    <source width="100%" media="(max-width:768px)" srcset="${URLUtils.staticURL('/images/waringcommercialproducts-checkout-header-medium.png')}">
+    <img width="100%" src="${URLUtils.staticURL('/images/waringcommercialproducts-checkout-header.png')}">
+  </picture>
+  <a href="https://www.waringcommercialproducts.com" class="clickableHeaderLogo"></a>
+</div>
+
+
+
+<iscomment>  Similar header like waringcom site not required now
+<div class="header-banner" style="height:20%">
+	<isslot id="header-banner" description="Slot above the site header" context="global" />
+</div>
+<div class="top-banner" role="banner" style="margin:0;vertical-align: top;">
+
+
+<style scoped>
+
+@media only screen and (max-width: 1299px){
+.spacer {
+  margin-left:200px !important;
+}
+#primary-nav ul#main-menu li:first-child::before {
+width: 1300px !important;
+left:-1024px;
+}
+}
+
+@media only screen and (min-width: 1300px) and (max-width: 1400px){
+.spacer {
+  margin-left:220px !important;
+}
+#primary-nav ul#main-menu li:first-child::before {
+width: 1300px !important;
+left:-1024px;
+}
+}
+
+@media only screen and (min-width: 1401px) and (max-width: 1500px){
+.spacer {
+  margin-left:265px !important;
+}
+#primary-nav ul#main-menu li:first-child::before {
+width: 1350px !important;
+left:-1024px;
+}
+}
+
+@media only screen and (min-width: 1501px) and (max-width: 1600px){
+.spacer {
+  margin-left:320px !important;
+}
+#primary-nav ul#main-menu li:first-child::before {
+width: 1400px !important;
+left:-1024px;
+}
+}
+
+
+@media only screen and (min-width: 1601px) and (max-width: 1660px){
+.spacer {
+  margin-left:335px !important;
+}
+#primary-nav ul#main-menu li:first-child::before {
+width: 1400px !important;
+left:-1024px;
+}
+}
+
+@media only screen and (min-width: 1661px) and (max-width: 1700px){
+.spacer {
+  margin-left:345px !important;
+}
+#primary-nav ul#main-menu li:first-child::before {
+width: 1400px !important;
+left:-1024px;
+}
+}
+
+@media only screen and (min-width: 1701px) and (max-width: 1730px){
+.spacer {
+  margin-left:365px !important;
+}
+#primary-nav ul#main-menu li:first-child::before {
+width: 1400px !important;
+left:-1024px;
+}
+}
+
+@media only screen and (min-width: 1731px) and (max-width: 1770px){
+.spacer {
+  margin-left:375px !important;
+}
+#primary-nav ul#main-menu li:first-child::before {
+width: 1450px !important;
+left:-1024px;
+}
+}
+
+@media only screen and (min-width: 1771px) and (max-width: 1800px){
+.spacer {
+  margin-left:385px !important;
+}
+#primary-nav ul#main-menu li:first-child::before {
+width: 1450px !important;
+left:-1024px;
+}
+}
+
+@media only screen and (min-width: 1801px) and (max-width: 1850px){
+.spacer {
+  margin-left:420px !important;
+}
+#primary-nav ul#main-menu li:first-child::before {
+width: 1550px !important;
+left:-1024px;
+}
+}
+
+@media only screen and (min-width: 1851px) and (max-width: 1900px){
+.spacer {
+  margin-left:450px !important;
+}
+#primary-nav ul#main-menu li:first-child::before {
+width: 1600px !important;
+left:-1024px;
+}
+}
+
+@media (min-width: 1900px){
+.spacer {
+  margin-left:460px !important;
+}
+#primary-nav ul#main-menu li:first-child::before {
+width: 1600px !important;
+left:-1024px;
+}
+}
+
+/*	MODIFIERS
+	-------------------------------------------------------------------------------------------------- */ 
+	
+	.inner {
+		width: 100%;
+		display: block; 
+		height: 100%; 
+		position: relative;
+		box-sizing: border-box; 	
+		margin: 0px auto; 
+		text-align: left;
+    height: 70px; 
+    background-color: #2b2b2b;
+    text-align: left;  	
+    margin: 0px; padding: 0px; 
+		font-family: mr-eaves-modern, sans-serif;
+		font-weight: 500;
+		-webkit-text-size-adjust: none;
+		line-height: 150%; 
+		color: #000;
+		font-size: 16px;
+		text-rendering: optimizeLegibility !important;
+		-webkit-font-smoothing: antialiased;
+    background-color: #2b2b2b;
+		box-sizing: border-box;
+		display: block;
+		left: 0;
+		top: 0;
+		width: 100%;
+		z-index: 10000;
+		box-shadow: 0px 4px 8px 2px rgba(0,0,0,0.75);
+		position: relative;
+	}
+  .inner * {
+    vertical-align:top;
+    margin-top:0px;
+  }
+	#primary-nav .navigation {
+    display: inline-block;
+    height: 100%;
+}
+	
+  .navigation ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    height: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+
+  }
+#primary-nav ul#main-menu li {
+  display: inline-block;
+    vertical-align: top;
+    font-size: 20px;
+    height: 100%;
+    margin-left: 0;
+    padding: 0;
+    text-align: -webkit-match-parent;
+    
+}
+
+.navigation ul li a {
+  cursor: pointer !important;
+}
+
+.logo-link {
+      background-color: #505050;
+    color: #fff;
+    display: block;
+    height: 100%;
+    margin: 0;
+    position: relative;
+    text-decoration: none;
+    -webkit-transform: skew(-15deg);
+    transform: skew(-15deg);
+    width: 160px;
+    
+}
+
+
+.logo-link span {
+    display: block;
+    position: relative;
+    top: 50%;
+    left: 10px;
+    padding-top: 5px;
+    -webkit-transform: translateY(-50%) skew(15deg);
+    transform: translateY(-50%) skew(15deg);
+    margin-left:-10px !important;
+}
+#primary-nav ul#main-menu li:first-child::before {
+    display: block;
+    width: 1600px;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    background-color: #505050;
+    content: "";
+    left:-1024px;
+}
+
+#primary-nav ul#main-menu li .logo-link:after {
+    background: #505050 none repeat scroll 0 0;
+    content: " ";
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+    -ms-transform: skew(15deg, 0deg);
+    -webkit-transform: skew(15deg, 0deg);
+    transform: skew(15deg, 0deg);
+    -webkit-transform-origin: left bottom 0;
+    transform-origin: left bottom 0;
+}
+.logo-link .logo {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: transparent;
+    content: "";
+    background-image: url('${URLUtils.staticURL('/images/waring-logo.png')}');
+    background-size: 100%;
+    background-position: 0px 18px 8px 0px;
+    background-repeat: no-repeat;
+    
+}
+
+#primary-nav ul#main-menu li .nav-link {
+    background-color: #3c3c3c;
+    color: #56afff;
+    display: block;
+    font-size: 20px;
+    height: 100%;
+    margin: 0 0 0 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transform: skew(-15deg);
+    width: 125px;
+}
+
+#primary-nav ul#main-menu li .nav-link span {
+    display: block;
+    position: relative;
+    text-align: center;
+    top: 80%;
+    pointer-events: none;
+    -webkit-transform: translateY(-80%) skew(15deg);
+    transform: translateY(-80%) skew(15deg);
+}
+.spacer {
+  margin-left:450px ;
+}
+</style>
+
+
+
+
+
+<section id="primary-nav" class="inner">
+  <nav class="navigation">
+  
+    <ul id="main-menu">
+      <li class="spacer"><a href="https://www.waringcommercialproducts.com" class="logo-link"><span class="logo"></span></a></li>
+      <li><a class="nav-link bold" href="https://www.waringcommercialproducts.com/c/mbgl1/blend"><span>Blend</span></a></li>
+      <li><a class="nav-link bold" href="https://www.waringcommercialproducts.com/c/mbgl1/prep"><span>Prep</span></a></li>
+      <li><a class="nav-link bold" href="https://www.waringcommercialproducts.com/c/mbgl1/cook"><span>Cook</span></a></li>
+      <li><a class="nav-link bold" href="https://www.waringcommercialproducts.com/c/mbgl1/brew"><span>Brew</span></a></li>
+      <li style="margin-left: 200px;background-color:none" ><a  href="${URLUtils.url('Cart-Show')}" ><img style="margin-top: 15px !important;" height="30px"  src="${URLUtils.staticURL('/images/Cart.png')}" alt="${Resource.msg('global.storename', 'locale', null)}"></a></li>
+    </ul>
+  </nav>
+  </section>
+
+
+
+
+
+
+
+
+
+</div>
+</iscomment>
+
+<iscomment>
+<script>
+		function searchOnWaring() {
+			var searchString = document.getElementById('search-new').value;
+			window.location.href = "https://www.waringcommercialproducts.com/search/"+searchString+"/start/0";
+    }
+    window.onload= function()  {
+    var x = document.getElementById("myDIV");
+    x.style.display = "none";
+  }
+  
+  function hamburger() {
+  var x = document.getElementById("myDIV");
+  var y = document.getElementById("bars1");
+  var z = document.getElementById("bars2");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    z.style.display = "block";
+    y.style.display = "none";
+  } else {
+    x.style.display = "none";
+    y.style.display = "block";
+    z.style.display = "none";
+  }
+    }
+</script>
+</iscomment>
+
+<script>
+//-----------------------------------------Radware--------------------------------------------
+
+(function(b,c,a,e){a=b.createElement(c);a.async=!0;a.src="https://cdn.perfdrive.com/aperture/xray.js";e=b.getElementsByTagName(c)[0];e.parentNode.insertBefore(a,e)})(document,"script");(function(b,c,a,e,g,d,f,h){b.SSJSConnectorObj={ss_cid:g,domain_info:"auto"};b[d]=function(a,c){b.SSJSConnectorObj[a]=c};f=c.createElement(a);f.async=!0;f.src=e;h=c.getElementsByTagName(a)[0];h.parentNode.insertBefore(f,h)})(window,document,"script","https://cdn.perfdrive.com/aperture/aperture.js","bgo5","ssConf");
+function ssResponseCookieReader(){try{var b=function(a,b,c){var d=null;a="undefined"!==typeof b&&!0===b?new RegExp("^\\s*"+a+"=\\s*(.*?)\\s*$"):new RegExp("^\\s*"+a+c+"=\\s*(.*?)\\s*$");for(b=0;b<e.length;b++)if(d=e[b].match(a),null!==d){d=d[1];break}return d},c=null,a=null,e=document.cookie.split(";"),g=window.location.hostname,d=g.split(".");"www"===d[0]&&d.splice(0,1);c=/^[0-9.]+$/.test(g)?"2":1===d.length?"1":b("__ssds",!0);"undefined"!==typeof c&&null!==c?(a=b("__ssuzjsr",!1,c),null!==a?(a=parseInt(a[4],
+10),"function"===typeof isNaN&&!0===isNaN(a)&&(a=-2)):a=-1):a=-1;return a}catch(f){return-2}}function ssRet(){try{var b="off",c="NA",a=ssResponseCookieReader();0<a&&9!==a?b="on":(9===a&&(b="dh"),"function"===typeof ssEnvEvaluator&&(c=ssEnvEvaluator(window,document))&&(b="on"));window.__klbfb=window.__klbfb||{};window.__klbfb.res=b;window.__klbfb.cv=a;window.__klbfb.env=c;window.__klbfb.envS="function"===typeof ssEnvEvaluator;return b}catch(e){return"off"}};
+
+</script>
+
+
+
+
+
+
+
+
+<!-- /header -->

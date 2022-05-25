@@ -1,0 +1,455 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+
+<iscomment>
+	Displays order details, such as order number, creation date, payment information,
+	order totals and information for each contained shipment.
+	This template module can be used in order confirmation pages as well as in the
+	order history to render the details of a given order. Depending on the context
+	being used in, one might omit rendering certain information.
+
+	Parameters:
+
+	order		: the order whose details to render
+	orderstatus	: if set to true, the order status will be rendered
+				  if set to false or not existing, the order status will not be rendered
+</iscomment>
+<style>
+.confirmdiv {
+	display:inline;
+	float:left;
+	width:50%;
+	margin-left:-12px;
+}
+.secondayButton {
+	margin-left:-10px ;
+}
+.productdetailscol {
+	width:50%;
+}
+.confirmtext {
+	font-size:48px;
+	font-weight:bold;
+	margin:0;
+	padding:0;
+}
+
+.statusdiv {
+	display:inline;
+	float:left;
+	width:50%;
+	font-size:24px;
+	margin-top:0.6%;
+}
+.statusdiv {
+	display:inline;
+	float:left;
+	width:50%;
+	font-size:24px;
+	margin-top:0.6%;
+}
+.pc {
+	width:75%;
+	padding-left:25%;
+}
+.confirmationdiv1 {
+	border-bottom:none;
+	margin-right:20%;
+	padding-bottom:0.7%;
+}
+.confirmationdiv2 {
+	display:none;
+}
+.summarydiv {
+	width:25%;
+	display:inline;
+	float:left;
+	margin-bottom:25px;
+	margin-top:20px;
+}
+.shippingaddressdiv {
+	width:20%;
+	display:inline;
+	float:left;
+	margin-left:10%;
+	margin-top:25px;
+	margin-right:10px;
+}
+.billingaddressdiv {
+	width:20%;
+	display:inline;
+	float:left;
+	font-style:normal;
+	margin-top:25px;
+	margin-right:10px;
+}
+.paymentinfodiv {
+	width:15%;
+	display:inline;
+	float:left;
+	margin-top:25px;
+}
+.tablecontainer {
+	width:90%;
+	padding-top:25%;
+}
+.headerrow{
+	border-bottom: 1px solid #DCDCDC;
+}
+.lineitemtable {
+	border-bottom: 1px solid #DCDCDC
+}
+.quantitydiv {
+	margin-top:24.5px;
+	text-align:center;
+	font-size:16px;
+}
+.outerdiv {
+	width:70%;
+	margin:3% 15% 5% 22%;
+}
+@media screen and (max-width:380px) {
+	.shippingProductName {
+		width:145%;
+	}
+	.productdetailscol {
+		width:40%;
+	}
+}
+@media screen and (max-width:1024px) {
+	
+	.pc {
+		width:95%;
+		padding-left:5%;
+	}
+	.confirmationdiv1 {
+		display:none;
+	}
+	.confirmationdiv2 {
+		display:block;
+	}
+	.summarydiv {
+		width:100%;
+		display:inline;
+		float:left;
+		margin-bottom:25px;
+		margin-top:20px;
+		margin-left:3%;
+	}
+	.shippingaddressdiv {
+		width:80%;
+		margin-left:20%;
+		margin-right:10px;
+	}
+	.billingaddressdiv {
+		width:80%;
+		margin-left:20%;
+		margin-right:10px;
+	}
+	.paymentinfodiv {
+		width:80%;
+		margin-left:20%;
+		margin-bottom:20%;
+	}
+	.tablecontainer {
+		width:105%;
+		padding-top:35%;
+	}
+	.headerrow {
+		display:none;
+	}
+	.lineitemtable {
+		padding-top:10%;
+		border-top: 1px solid #DCDCDC;
+	}
+	.shippingProductName {
+		font-size : 14px !important;
+		font-weight: normal !important;
+		margin-bottom: 5px !important;
+	}
+	.quantitydiv {
+		width:50%;
+	}
+	.line-items {
+		margin-right:5%;
+		width:100%;
+	}
+	.spacerdiv {
+		display:none;
+	}
+	.outerdiv {
+		width:100%;
+		margin-left:10px;
+	}
+	.line-item-details {
+		width:100%;
+	}
+	.confirmation {
+		padding:0px !important;
+	}
+	
+}
+@media screen and (min-width:700px) and (max-width:1024px) {
+	.secondaryButton {
+		margin-left:2% !important;
+	}
+	.lineitemtable {
+		padding-top:10%;
+		border-top: 1px solid #DCDCDC;
+		margin-left:3%;
+	}
+}
+@media screen and (min-width:1025px) and (max-width:1500px) {
+	.outerdiv {
+		width: 90%;
+		margin: 3% 15% 5% 15%;
+	}
+}
+</style>
+<isset name="Order" value="${pdict.order}" scope="page"/>
+
+<div class="confirmation <isif condition="${!pdict.CurrentCustomer.authenticated}">create-account</isif>" >
+		<div class="confirmationdiv1">
+			<div class="confirmdiv">
+				<h1 class="confirmtext">Order Confirmed!</h1>
+				<p> </p>
+			</div>
+			<div class="statusdiv" align="right">
+				<b><span class="label">Order Number:</span></b>
+            <span class="value" ><isprint value="${Order.orderNo}"/></span>
+            <isif condition="${!empty(pdict.orderstatus) && pdict.orderstatus == 'true'}">
+            <isinclude template="account/orderhistory/orderstatusinclude"/>
+            </isif>
+            <div>
+              <b><span class="label">Date:</span></b>
+              <span class="value"><isprint value="${Order.creationDate}" style="DATE_LONG"/></span>
+            </div>
+			</div>
+		</div>
+		<div class="confirmationdiv2">
+		<center>
+			<h1 style="font-size:18px;font-weight:bold">Order Confirmed!</h1>
+			<br>
+			<p style="font-size:16px;font-weight:bold"> Order Number : <isprint value="${Order.orderNo}"/> </p>
+			<p style="font-size:16px;font-weight:bold"> Date : <isprint value="${Order.creationDate}" style="DATE_LONG"/> </p>
+		</center>
+			
+		</div>
+	<div style="width:90%;padding-right:10%;margin-top:13%; margin-bottom:10%;">
+
+                <div >
+                <div class="summarydiv">
+				<p style="font-size:24px;padding-bottom:0px;font-weight:bold;margin:1% 0% 3% 0%">Summary</p>
+                  <isif condition="${Order.shipments.length > 1}">
+                    <isconfirmationordertotals p_lineitemctnr="${Order}" p_showshipmentinfo="${true}" p_shipmenteditable="${false}" p_totallabel="${Resource.msg('global.ordertotal','locale',null)}"/>
+                  <iselse/>
+                    <isconfirmationordertotals p_lineitemctnr="${Order}" p_showshipmentinfo="${false}" p_shipmenteditable="${false}" p_totallabel="${Resource.msg('global.ordertotal','locale',null)}"/>
+                  </isif>
+                </div>
+
+
+                <div class="order-shipment-address shippingaddressdiv" >
+    				 <isloop items="${Order.shipments}" var="shipment" status="shipmentloopstate">
+                      			
+
+                      			<isif condition="${shipment.productLineItems.size() > 0}">
+                      				<iscomment>Shipment Items</iscomment>
+                      				<div class="order-shipment-table">
+                      					<div class="order-shipment-details">
+                      						<div class="order-shipment-address">
+                      							<isif condition="${!empty(shipment.custom.shipmentType) && shipment.custom.shipmentType == 'instore'}">
+                      								<div class="label">${Resource.msg('cart.store.instorepickup','checkout',null)}</div>
+                      							<iselse/>
+                      								<p style="font-size:14px;font-weight:bold">Shipping Address</p>
+                      							</isif>
+                      							<isminishippingaddress p_shipment="${shipment}" p_editable="${false}" p_showmethod="${false}" p_showpromos="${false}"/>
+                      						</div>
+                      						
+                      						<isif condition="${!empty(shipment.trackingNumber)}">
+                      							<div class="trackingnumber">
+                      								<div class="label">${Resource.msg('order.orderdetails.tracking','order',null)}</div>
+                      								<div class="value"><!-- Tracking Number --><isprint value="${shipment.trackingNumber}"/></div>
+                      							</div>
+                      						</isif>
+                      						
+                      						
+                      					</div>
+
+                      				
+                      				</div>
+                      			</isif>
+
+                      			
+                      		</isloop>
+    			</div>
+
+                <div class="billingaddressdiv" >
+                    <p style="font-size:14px;font-weight:bold;">Billing Address</p>
+		            <isminiaddress p_address="${Order.billingAddress}"/>
+                </div>
+
+				
+				<div class="paymentinfodiv">
+
+					<div class="label"  >
+						<isif condition="${Order.paymentInstruments.length == 1}">
+							<p style="font-size:14px;font-weight:bold">Payment Method</p>
+						<iselse/>
+							<p style="font-size:14px;font-weight:bold">Payment Methods</p>
+						</isif>
+					</div>
+					<isloop items="${Order.getPaymentInstruments()}" var="paymentInstr">
+					<isif condition="${dw.order.PaymentInstrument.METHOD_GIFT_CERTIFICATE.equals(paymentInstr.paymentMethod)}">
+						<div class="orderpaymentinstrumentsgc">
+						<span class="label"><isprint value="${dw.order.PaymentMgr.getPaymentMethod(paymentInstr.paymentMethod).name}" /></span>
+						<span class="value"><isprint value="${paymentInstr.maskedGiftCertificateCode}"/></span>
+						<span class="payment-amount">
+							<span class="label">${Resource.msg('global.amount','locale',null)}:</span>
+							<span class="value"><isprint value="${paymentInstr.paymentTransaction.amount}"/></span>
+						</span>
+						</div>
+					<iselse/>
+						<div class="payment-type"><isprint value="${dw.order.PaymentMgr.getPaymentMethod(paymentInstr.paymentMethod).name}" /></div>
+						<isminicreditcard card="${paymentInstr}" show_expiration="${false}"/>
+						<div class="payment-amount">
+						<iscomment><span class="label">${Resource.msg('global.amount','locale',null)}:</span>
+						<span class="value"><isprint value="${paymentInstr.paymentTransaction.amount}"/></span></iscomment>
+						</div><!-- END: payment-amount -->
+					</isif>
+					</isloop>
+            </div>
+
+        <div class="tablecontainer">
+
+            <div style="width:50%;display:inline;" >
+
+
+                                <isloop items="${Order.shipments}" var="shipment" status="shipmentloopstate">
+                      			
+
+                      			<isif condition="${shipment.productLineItems.size() > 0}">
+                      				<iscomment>Shipment Items</iscomment>
+                      				<div class="order-shipment-table">
+                      					<div class="order-shipment-details">
+                      						
+                      					</div>
+                      					<div class="line-items">
+										  
+										  <table class="lineitemtable">
+										  <tr class="headerrow"><th  style="padding-left:4%;padding-bottom:5px;font-size:24px" colspan="2">Product</th><th  style="padding-bottom:5px;font-size:24px;text-align:center">Quantity</th colspan="0.5"><th></th><th  style="padding-left:1.1%;padding-bottom:5px;font-size:24px">Price</th></tr>
+                      						<isloop items="${shipment.productLineItems}" var="productLineItem" status="pliloopstate">
+											  <tr style="border-left: 1px solid #DCDCDC;border-right: 1px solid #DCDCDC;">
+											  <td class="item-image" style="padding:2% 0% 0% 4%">
+													<isif condition="${productLineItem.product != null && productLineItem.product.getImage('small',0) != null}">
+														<img width="60px" height="60px" src="${productLineItem.product.getImage('small',0).getURL()}" alt="${productLineItem.product.getImage('small',0).alt}" title="${productLineItem.product.getImage('small',0).title}"/>
+													<iselse/>
+														<img src="${URLUtils.staticURL('/images/noimagesmall.png')}" alt="${productLineItem.productName}" title="${productLineItem.productName}"/>
+													</isif>
+													<isif condition="${productLineItem.bonusProductLineItem}">
+														<div class="bonus-item">
+															<isset name="bonusProductPrice" value="${productLineItem.getAdjustedPrice()}" scope="page"/>
+															<isinclude template="checkout/components/displaybonusproductprice" />
+															<isprint value="${bonusProductPriceValue}" />
+														</div>
+													</isif>
+													
+												</td>
+											  <td class="productdetailscol">
+
+                      								<div class="line-item-details" >
+
+                      									<iscomment>Display product line and product using module</iscomment>
+														  
+                      									<isdisplayliproduct p_productli="${productLineItem}" p_editable="${false}"/>
+                      								</div>
+													  </td>
+													  <td>
+                      								<div class="line-item-quantity quantitydiv">
+
+                      									<isprint value="${productLineItem.quantity}"/>
+                      								</div>
+													  </td>
+													  <td class="spacerdiv"></td>
+													  <td>
+                      								<div class="line-item-price" style="margin-top:24.5px;font-size:16px">
+
+                      									<iscomment>Render quantity. If it is a bonus product render word 'Bonus'</iscomment>
+                      									<isif condition="${productLineItem.bonusProductLineItem}">
+                      										<div class="bonus-item">
+                      											<isset name="bonusProductPrice" value="${productLineItem.getAdjustedPrice()}" scope="page"/>
+                      											<isinclude template="checkout/components/displaybonusproductprice" />
+                      											<isprint value="${bonusProductPriceValue}" />
+                      										</div>
+                      									<iselse/>
+                      										<isprint value="${productLineItem.adjustedPrice}"/>
+                      										<isif condition="${productLineItem.optionProductLineItems.size() > 0}">
+                      											<isloop items="${productLineItem.optionProductLineItems}" var="optionLI">
+                      												<div class="product-option-price">+ <isprint value="${optionLI.adjustedPrice}"/></div>
+                      											</isloop>
+                      										</isif>
+                      									</isif>
+                      								</div>
+													</td>
+												  </tr>
+                      						</isloop>
+											  
+											  </table>
+                      					</div>
+                      				</div>
+                      			</isif>
+
+                      			<isif condition="${shipment.giftCertificateLineItems.size() > 0}">
+                      				<div class="order-shipment-table">
+                      					<div class="order-shipment-details">
+                      						<iscomment>Shipment Gift Certificate</iscomment>
+                      						<isloop items="${shipment.giftCertificateLineItems}" var="giftCertificateLineItem" status="gcliloopstate">
+                      							<div class="order-gift-cert-attributes order-shipment-address">
+                      								<div class="order-gift-cert-to">
+                      									<div class="label">${Resource.msg('order.orderdetails.giftcertto','order',null)}</div>
+                      									<div class="value"><isprint value="${giftCertificateLineItem.recipientName}"/></div>
+                      									<div class="value"><isprint value="${giftCertificateLineItem.recipientEmail}"/></div>
+                      								</div>
+                      								<div class="order-gift-cert-from">
+                      									<div class="label">${Resource.msg('order.orderdetails.giftcertfrom','order',null)}</div>
+                      									<div class="value"><isprint value="${giftCertificateLineItem.senderName}"/></div>
+                      									<div class="value"><isprint value="${Order.customerEmail}"/></div>
+                      								</div>
+                      							</div>
+                      							<div class="order-gift-cert-amount">
+                      								<div class="label">${Resource.msg('global.giftcertificate','locale',null)}</div>
+                      								<div class="value"><isprint value="${giftCertificateLineItem.price}"/></div>
+                      							</div>
+                      							<div class="shipping-method">
+                      								<div class="label">${Resource.msg('order.orderdetails.shippingmethod','order',null)}</div>
+                      								<div class="value">${Resource.msg('order.orderdetails.giftcertshipping','order',null)}</div>
+                      								<div class="value"><isprint value="${giftCertificateLineItem.recipientEmail}"/></div>
+                      							</div>
+                      						</isloop>
+
+                      						<iscomment>if shipment is marked as gift</iscomment>
+                      						<isif condition="${shipment.gift}">
+                      							<div class="order-shipment-gift-message">
+                      								<div class="label">${Resource.msg('order.orderdetails.giftmessage','order',null)}</div>
+                      								<isif condition="${!empty(shipment.giftMessage)}">
+                      									<div class="value"><isprint value="${shipment.giftMessage}"/></div>
+                      								</isif>
+                      							</div>
+                      						<iselse/>
+                      							<div class="order-shipment-gift-message">
+                      								<isset name="theGiftCert" value="${shipment.giftCertificateLineItems.iterator().next()}" scope="page"/>
+                      								<div class="label">${Resource.msg('order.orderdetails.giftmessage','order',null)}</div>
+                      								<isif condition="${!empty(theGiftCert.message)}">
+                      									<div class="value"><isprint value="${theGiftCert.message}"/></div>
+                      								</isif>
+                      							</div>
+                      						</isif>
+                      					</div>
+                      				</div>
+                      			</isif>
+                      		</isloop>
+							  </table>
+            </div>
+
+        </div>
+
+</div>
+

@@ -1,0 +1,8 @@
+GTMproducts.push({
+	"name": "${pli.product.name}",
+	"id": "${pli.product.ID}",
+	"brand": "Waring",
+	"category": "${!empty( pli.product.primaryCategory.getParent().displayName ) ? pli.product.primaryCategory.getParent().displayName :''}",
+	"price": ${pli.adjustedPrice.value.toFixed(2)},
+	"quantity": ${pli.quantityValue.toFixed()}
+});

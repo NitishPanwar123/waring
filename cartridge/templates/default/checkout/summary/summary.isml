@@ -1,0 +1,470 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isdecorate template="checkout/pt_checkout"/>
+<isinclude template="util/modules"/>
+
+<iscomment>
+	This template visualizes the last step of the checkout, the order summary
+	page prior to the actual order placing.
+	It displays the complete content of the cart including product line items,
+	bonus products, redeemed coupons and gift certificate line items.
+</iscomment>
+<style>
+.c-r-uppercase{
+text-transform: uppercase;
+}
+.c-r-width{
+	width:78%;
+}
+.prodtable {
+	width:80%;
+	background-color:white;
+	border-bottom:1px solid #DCDCDC;
+	margin-top:5%;
+	
+}
+.main-div1 {
+	width: 77%;
+	margin:5% 13% 13% 20%;
+}
+.detailboxes1 {
+	width:100%;
+}
+.detailboxes2 {
+	width:100%;
+	display:none;
+	
+}
+.summarytext {
+	Font-size:20px;
+	font-weight:bold;
+}
+.pricediv {
+	text-align:center !important;
+	padding:5% 0% 0% 0% !important;
+	font-size:16px !important;
+}
+.orderreviewtext {
+	font-size:40px;
+	font-weight:bold;
+}
+.wrapperdiv1 {
+	display:inline;
+	float:left;
+	width:70%;
+}
+
+@media screen and (max-width:330px) {
+	.pricediv {
+		margin-left:-3% !important;
+	}
+}
+@media screen and (max-width:500px) {
+	.item-quantity {
+		margin-left:30%;
+		margin-right:0% !important;
+	}
+}
+@media only screen and (min-width: 600px) and (max-width: 1600px){
+.main-div1 {
+	zoom:85%;
+	}
+.a1 {
+	margin-left:15% !important;
+}
+}
+@media only screen and (min-width: 1600px) and (max-width: 1800px){
+.main-div1 {
+	zoom:90%;
+	}
+.a1 {
+	margin-left:10% !important;
+}
+}
+
+@media only screen and (min-width: 500px) and (max-width: 1024px){
+ .submitpay {
+    padding:2% 4% 2% 0% !important;
+}
+}
+@media only screen and (max-width: 767px){
+	.prodtable {
+		border-top:1px solid #DCDCDC;
+	}
+}
+@media only screen and (max-width: 1024px){
+	.detailboxes1 {
+		display:none;
+	}
+	.detailboxes2 {
+		width:100%;
+		display:block;
+	}
+	.main-div1 {
+		width: 77%;
+		margin:5% 13% 13% 5%;
+	}
+	.prodtable {
+		width:160%;
+		margin-bottom:15%;
+		margin-top:15%;
+	}
+	.shippingProductName {
+		font-size : 14px !important;
+		font-weight: normal !important;
+		margin-bottom: 5px !important;
+	}
+	#cart-table td {
+		order:5;
+		font-size:14px !important;
+	}
+	.item-quantity {
+		margin-left:30%;
+		margin-right:20%;
+	}
+	
+	.prodtable tr {
+		padding-bottom:5%;
+	}
+	.summarytext {
+		display:none;
+	}
+	.checkout-order-totals {
+		background-color: rgba(0, 0, 0, 0) !important;
+	}
+	
+	.summary {
+		float:none !important;
+	}
+	.mini-shipment {
+		margin-left:1.8% !important;
+		width:99.7%;
+	}
+
+	.details {
+		font-size:14px;
+	}
+}
+@media only screen and (min-width: 1025px) and (max-width: 1359px) {
+	.main-div1 {
+		width: 100% !important;
+		margin: 7.5% 0% 17% 0% !important;
+	}
+	.orderreviewtext {
+		font-size:40px;
+		font-weight:bold;
+		margin-left:10%;
+	}
+	.wrapperdiv1 {
+		display:inline;
+		float:left;
+		width:70%;
+		margin-left:10%;
+	}
+
+}
+
+
+@media only screen and (min-width: 600px) and (max-width: 1024px){
+	.c-r-width{
+		width:156.5%;
+	}
+}
+@media only screen and (min-width: 488px) and (max-width: 600px){
+	.c-r-width{
+		width:154.5%;
+	}
+	.c-r-font-size{
+		font-size:12px !important;
+	}
+}
+@media only screen and (min-width: 220px) and (max-width: 488px){
+	.c-r-width{
+		width:149%;
+	}
+	.c-r-font-size{
+		font-size:12px !important;
+	}
+}
+</style>
+<div class="main-div1">
+<div>
+<h1 class="orderreviewtext">Order Review</h1>
+</div>
+<div class="wrapperdiv1">
+	
+
+<isreportcheckout checkoutstep="${5}" checkoutname="${'OrderSummary'}"/>
+	<isif condition="${!pdict.CurrentForms.multishipping.entered.value}">
+		<iscomment><ischeckoutprogressindicator step="3" multishipping="false" rendershipping="${pdict.Basket.productLineItems.size() == 0 ? 'false' : 'true'}"/></iscomment>
+	<iselse/>
+		<iscomment><ischeckoutprogressindicator step="4" multishipping="true" rendershipping="${pdict.Basket.productLineItems.size() == 0 ? 'false' : 'true'}"/></iscomment>
+	</isif>
+
+	 <iscomment> <isif condition="${pdict.PlaceOrderError != null}">
+		<div class="error-form" style="width:78%">${Resource.msg(pdict.PlaceOrderError.code,'checkout',null)}</div>
+	</isif>  </iscomment>
+
+	<isif condition="${pdict.PlaceOrderError !=null}">
+		<div class="error-form c-r-width" >
+			<isif condition="${Resource.msg(pdict.PlaceOrderError.code,'checkout',null) == 'kount'}">
+				<span> <b class="c-r-font-size"> ${Resource.msg('declined.kount.error.heading','checkout',null)} </b> </span> <br/>
+				${Resource.msg('declined.kount.error.description','checkout',null)}
+			<iselseif condition="${Resource.msg(pdict.PlaceOrderError.code,'checkout',null) == 'paymetric'}">
+				<span> <b class="c-r-font-size"> ${Resource.msg('error.paymetric.heading','checkout',null)} </b> </span> <br/>
+				${Resource.msg('error.paymetric.error.description','checkout',null)}<br/>
+				<small>${Resource.msg('error.paymetric.error.tip','checkout',null)}</small>
+			<iselse/>
+				${Resource.msg(pdict.PlaceOrderError.code,'checkout',null)}
+			</isif>
+		</div>
+	</isif>
+	<div class="detailboxes1">
+		<isif condition="${typeof checkoutstep !== 'undefined' && !empty(checkoutstep) && (checkoutstep >= 2)}">
+			<isif condition="${pdict.CurrentForms.multishipping.entered != true}">
+				<div style="width:25%;display:inline-block;postion:absolute;overflow:none;vertical-align:top">
+				<isinclude template="checkout/shipping/minishipments"/>
+				</div>
+			</isif>
+			<div style="width:25%;display:inline-block;postion:absolute;overflow:none;margin-left:2%;vertical-align:top">
+			<isinclude template="checkout/billing/minibillinginfo"/>
+			</div>	
+			<div style="width:25%;display:inline-block;postion:absolute;overflow:none;margin-left:2%;vertical-align:top">
+			<isinclude template="checkout/billing/minipaymentinfo"/>
+			</div>		
+			
+		</isif>
+	</div>
+		<table class="prodtable" id="cart-table" cellspacing="0">
+
+			<thead style="margin-bottom:10px">
+				<tr style="border-bottom:1px solid #DCDCDC;margin-bottom:1%;">
+					<b><th style="background-color:white;font-size:20px;text-align:right;padding-bottom:5px;padding-left:4%"  colspan="1">Product</th></b>
+					<b><th style="background-color:white;font-size:16px;text-align:center;padding-bottom:5px;"  colspan="1"></th></b>
+					<b><th style="background-color:white;font-size:20px;padding-bottom:5px;text-align:center"   colspan="1">Quantity</th></b>
+					<b><th style="background-color:white;text-align:center;font-size:20px;padding-bottom:5px;" >Price</th></b>
+				</tr>
+			</thead>
+
+			<iscomment>render each shipment</iscomment>
+			<isset name="shipmentCount" value="${0}" scope="page"/>
+			
+			<isloop items="${pdict.Basket.shipments}" var="shipment" status="shipmentloopstate">
+
+				<isif condition="${shipment.productLineItems.size() > 0 || shipment.giftCertificateLineItems.size() > 0}">
+
+					<isset name="shipmentCount" value="${shipmentCount+1}" scope="page"/>
+					<isif condition="${pdict.Basket.shipments.size() > 1}">
+						<tr class="cart-row">
+							<td colspan="5">
+								<div class="shipment-label">${Resource.msgf('multishippingshipments.shipment','checkout',null, shipmentCount)}</div>
+							</td>
+						</tr>
+					</isif>
+					<isloop items="${shipment.productLineItems}" var="productLineItem" status="pliloopstate" >
+
+						<tr style="border-left:1px solid #DCDCDC;border-right:1px solid #DCDCDC;"class="cart-row <isif condition="${pliloopstate.first}"> first <iselseif condition="${pliloopstate.last}"> last</isif>">
+
+
+							<td class="item-image" style="padding:2% 0% 0% 4%">
+								<isif condition="${productLineItem.product != null && productLineItem.product.getImage('small',0) != null}">
+									<img width="60px" height="60px" src="${productLineItem.product.getImage('small',0).getURL()}" alt="${productLineItem.product.getImage('small',0).alt}" title="${productLineItem.product.getImage('small',0).title}"/>
+								<iselse/>
+									<img src="${URLUtils.staticURL('/images/noimagesmall.png')}" alt="${productLineItem.productName}" title="${productLineItem.productName}"/>
+								</isif>
+								<isif condition="${productLineItem.bonusProductLineItem}">
+									<div class="bonus-item">
+										<isset name="bonusProductPrice" value="${productLineItem.getAdjustedPrice()}" scope="page"/>
+										<isinclude template="checkout/components/displaybonusproductprice" />
+										<isprint value="${bonusProductPriceValue}" />
+									</div>
+								</isif>
+								
+							</td>
+
+							<td class="item-details" style="padding:2% 0% 0% 4%" width="50%">
+								<iscomment>Display product line and product using module</iscomment>
+								<isdisplayliproduct p_productli="${productLineItem}" p_editable="${false}"/>
+								<div class="item-stock" style="list-style-type:none;">
+									<isdisplayproductavailability p_productli="${productLineItem}"/>
+								</div>
+							</td>
+
+							<td class="item-quantity" style="padding:5% 0% 0% 0%;font-size:16px;text-align:center">
+								<isprint value="${productLineItem.quantity}" />
+								
+							</td>
+
+							<td class="pricediv">
+								<isif condition="${productLineItem.bonusProductLineItem}">
+									<div class="bonus-item">
+										<isprint value="${bonusProductPriceValue}" />
+									</div>
+								<iselse/>
+									<iscomment>Otherwise, render price using call to adjusted price </iscomment>
+									<isprint value="${productLineItem.adjustedPrice}" />
+								</isif>
+								<isif condition="${productLineItem.optionProductLineItems.size() > 0}">
+									<isloop items="${productLineItem.optionProductLineItems}" var="optionLI">
+										<isif condition="${optionLI.price > 0}">
+											<p>+ <isprint value="${optionLI.adjustedPrice}"/></p>
+										</isif>
+									</isloop>
+								</isif>
+							</td>
+						</tr>
+
+					</isloop>
+
+
+					<isloop items="${shipment.giftCertificateLineItems}" var="giftCertificateLineItem" status="gcliloopstate">
+
+						<tr  class="cart-row <isif condition="${gcliloopstate.first}"> first <iselseif condition="${gcliloopstate.last}"> last</isif>">
+
+							<td class="item-image">
+								<img src="${URLUtils.staticURL('/images/gift_cert.gif')}" alt="<isprint value="${giftCertificateLineItem.lineItemText}"/>" />
+							</td>
+
+							<td class="item-details">
+								<div class="gift-certificate-to">
+									<span class="label">${Resource.msg('global.to','locale',null)}:</span>
+									<span class="value">
+										<isprint value="${giftCertificateLineItem.recipientName}"/>
+										(<isprint value="${giftCertificateLineItem.recipientEmail}"/>)
+									</span>
+								</div>
+								<div class="gift-certificate-from">
+									<span class="label">${Resource.msg('global.from','locale',null)}:</span>
+									<span class="value"><isprint value="${giftCertificateLineItem.senderName}"/></span>
+								</div>
+							</td>
+
+							<td class="item-quantity" colspan="2">1</td>
+
+							<td  class="item-total">
+								<isprint value="${giftCertificateLineItem.price}"/>
+							</td>
+
+						</tr>
+
+					</isloop>
+
+				</isif>
+
+			</isloop>
+
+			<tfoot>
+
+			<iscomment>RENDER COUPON/ORDER DISCOUNTS</iscomment>
+			<isloop items="${pdict.Basket.couponLineItems}" var="couponLineItem" status="cliloopstate">
+
+				<isif condition="${couponLineItem.valid}">
+
+					<tr class="cart-row <isif condition="${cliloopstate.first}"> first <iselseif condition="${cliloopstate.last}"> last</isif>" style="border-left: 1px solid #DCDCDC; border-right: 1px solid #DCDCDC;">
+
+						<td class="item-image"><!-- BLANK IMAGE CELL --></td>
+
+						<td  class="item-details">
+							<div class="name">${Resource.msg('summary.coupon','checkout',null)}</div>
+							<div class="cart-coupon">
+								<span class="label">${Resource.msg('summary.couponnumber','checkout',null)}</span>
+								<span class="value"><isprint value="${couponLineItem.couponCode}"/></span>
+							</div>
+							<isloop items="${couponLineItem.priceAdjustments}" var="Promo" status="loopstate">
+								<div class="discount clearfix <isif condition="${loopstate.first}"> first <iselseif condition="${loopstate.last}"> last</isif>">
+									<span class="label"><isprint value="${Promo.lineItemText}"/></span>
+									<span class="value">(<isprint value="${Promo.price}"/>)</span>
+								</div>
+							</isloop>
+						</td>
+
+						<td class="item-quantity">&nbsp;</td>
+
+						<td class="item-quantity-details">
+							<div class="item-edit-details">
+								<a href="${URLUtils.url('Cart-Show')}">${Resource.msg('global.editdetails','locale',null)}</a>
+							</div>
+						</td>
+
+						<td class="item-total">
+							<isif condition="${couponLineItem.applied}">
+								<span class="coupon-applied" style="padding-right: 20px;">${Resource.msg('summary.applied','checkout',null)}</span>
+							<iselse/>
+								<span class="coupon-not-applied">${Resource.msg('summary.notapplied','checkout',null)}</span>
+							</isif>
+						</td>
+
+					</tr>
+
+				</isif>
+
+			</isloop>
+
+			<isloop items="${pdict.Basket.priceAdjustments}" var="priceAdjustment" status="cliloopstate">
+
+				<tr>
+					<td colspan="5" class="cart-promo">
+						<div>
+							<span class="label">${Resource.msg('summary.orderdiscount','checkout',null)}</span>
+							<span class="value"><isprint value="${priceAdjustment.lineItemText}"/></span>
+						</div>
+					</td>
+				</tr>
+
+			</isloop>
+
+
+
+			</tfoot>
+			</div>
+
+		</table>
+		</div>
+		<div id="secondary" class="nav summary" style="display:inline;margin-left:-10%;width:20%">
+				<isinclude template="checkout/minisummary"/>
+		</div>
+		<div class="detailboxes2">
+		<isif condition="${typeof checkoutstep !== 'undefined' && !empty(checkoutstep) && (checkoutstep >= 2)}">
+			<isif condition="${pdict.CurrentForms.multishipping.entered != true}">
+				<div style="width:100%;postion:absolute;overflow:none;vertical-align:top">
+				<isinclude template="checkout/shipping/minishipments"/>
+				</div>
+			</isif>
+			<div style="width:100%;postion:absolute;overflow:none;margin-left:2%;vertical-align:top">
+			<isinclude template="checkout/billing/minibillinginfo"/>
+			</div>	
+			<div style="width:100%;postion:absolute;overflow:none;margin-left:2%;vertical-align:top">
+			<isinclude template="checkout/billing/minipaymentinfo"/>
+			</div>		
+			
+		</isif>
+	</div>
+		<div style="padding-bottom:30%"></div>
+
+		<isslot id="placeorder-slot" description="Slot next to Order Totals in the footer of the Place Order page." context="global"/>
+
+		<iscomment><div class="order-summary-footer">
+
+			<div class="place-order-totals">
+				<isordertotals p_lineitemctnr="${pdict.Basket}" p_showshipmentinfo="${false}" p_shipmenteditable="${false}" p_totallabel="${Resource.msg('summary.ordertotal','checkout',null)}"/>
+			</div>
+
+			<form action="${URLUtils.https('COSummary-Submit')}" method="post" class="submit-order">
+				<fieldset>
+					<div class="form-row">
+						<a class="back-to-cart" href="${URLUtils.url('Cart-Show')}">
+							<isprint value="${Resource.msg('summary.editcart','checkout',null)}" encoding="off" />
+						</a>
+						<button class="button-fancy-large" type="submit" name="submit" value="${Resource.msg('global.submitorder','locale',null)}">
+							${Resource.msg('global.submitorder','locale',null)}
+						</button>
+					</div>
+			        <input type="hidden" name="${dw.web.CSRFProtection.getTokenName()}" value="${dw.web.CSRFProtection.generateToken()}"/>
+					
+				</fieldset>
+			</form>
+
+		</div></iscomment>
+<isif condition="${dw.system.Site.current.preferences.custom.GoogleTagManagerEnabled}" >
+	<isinclude template="components/google/gtmsummary" />
+</isif>
+</isdecorate>

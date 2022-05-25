@@ -1,0 +1,150 @@
+
+var Site = require('dw/system/Site').getCurrent();
+var LocalServiceRegistry = require('dw/svc/LocalServiceRegistry');
+var WSUtil = require('dw/ws/WSUtil');
+var collections = require('*/cartridge/scripts/util/collections');
+
+function getXiPayTransactionID(infoItems) {
+    var result = '';
+    collections.forEach(infoItems, function (item) {
+        if (item.getKey() === 'TR_TRANS_REFID') {
+            result = item.getValue();
+        }
+    });
+    return result;
+}
+function createPaypalRequest(service, params) {
+    var order = params.order;
+    var pi = order.paymentInstruments[0];
+    var address = order.billingAddress;
+    var webref = webreferences2.XiPay30WS;
+
+    var th = new webref.ITransactionHeader();
+    th.setMerchantID(Site.getCustomPreferenceValue('PP_API_Merchant_Id'));
+    th.setAmount(order.totalGrossPrice.value);
+    th.setCurrencyKey(order.currencyCode);
+    th.setCardHolderName(address.firstName + ' ' + address.lastName);
+    th.setCardHolderName1(address.firstName);
+    th.setCardHolderName2(address.lastName);
+    th.setCardHolderAddress1(address.address1);
+    th.setCardHolderAddress2(address.address2);
+    th.setCardHolderCity(address.city);
+    th.setCardHolderState(address.stateCode);
+    th.setCardHolderZip(address.postalCode);
+    th.setCardHolderCountry(address.countryCode);
+    th.setCardType('PP');
+    th.setCardNumber(order.paymentInstrument.custom.paypalTransactionID);
+    th.setPacketOperation(1);
+
+    var infoItem = new webref.InfoItem();
+    infoItem.setKey('TR_TRANS_REFID');
+    infoItem.setValue(order.paymentInstrument.custom.paypalTransactionID);
+
+    var infoItem_PAYPALCOMPLETE = new webref.InfoItem();
+    infoItem_PAYPALCOMPLETE.setKey('TR_TRANS_PAYPALCOMPLETE');
+    infoItem_PAYPALCOMPLETE.setValue('NotComplete');
+
+    var arrayOfInfo = new webref.ArrayOfInfoItem();
+    arrayOfInfo.infoItem.add(infoItem);
+    arrayOfInfo.infoItem.add(infoItem_PAYPALCOMPLETE);
+    th.setInfoItems(arrayOfInfo);
+
+    var arrayTransHead = new webref.ArrayOfITransactionHeader();
+    arrayTransHead.ITransactionHeader.add(th);
+
+    var packet = new webref.IPackets();
+    packet.setCount(1);
+    packet.setPackets(arrayTransHead);
+    packet.setXipayvbresult(false);
+    return packet;
+}
+
+function authorize(order, cvn) {
+    // return LocalServiceRegistry.createService('XiInterceptAuthorize_' + Site.ID, {
+    return LocalServiceRegistry.createService('XiInterceptAuthorize_paypal', {
+        initServiceClient: function (service) {
+            var webref = webreferences2['XiPay30WS'];
+            var port = webref.getDefaultService();
+            WSUtil.setUserNamePassword(service.configuration.credential.user, service.configuration.credential.password, port);
+            return port;
+        },
+        createRequest: function (service, params) {
+            return createPaypalRequest(service, params);
+        },
+        execute: function (service, request) {
+            return service.serviceClient.soapOp(request);
+        },
+        parseResponse: function (service, response) {
+            var packet = response.getPackets();
+            var th = packet.getITransactionHeader()[0];
+            var infoItems = th.getInfoItems().getInfoItem();
+            return {
+                AuthorizationCode: getXiPayTransactionID(infoItems),
+                TransactionID: th.getTransactionID(),
+                AVSstreetOK: null,
+                AVSzipOK: null,
+                CVVOK: null,
+                AVSCode: th.getAVSCode(),
+                CVVCode: null,
+                StatusCode: th.getStatusCode(),
+                OrderID: th.getOrderID(),
+                CCType: 'PP',
+                ignoreCVV: false
+            };
+        },
+        // getResponseLogMessage: function(response) {
+        //     var packet = response.getPackets();
+        //     var th = packet.getITransactionHeader()[0];
+        //     return JSON.stringify({
+        //         AuthorizationCode: th.getTransactionID(),
+        //         TransactionID: th.getTransactionID(),
+        //         AVSstreetOK: null,
+        //         AVSzipOK: null,
+        //         CVVOK: null,
+        //         AVSCode: th.getAVSCode(),
+        //         CVVCode: null,
+        //         StatusCode: th.getStatusCode(),
+        //         OrderID: th.getOrderID(),
+        //         CCType: 'PP',
+        //         ignoreCVV: false
+        //     });
+        // },
+        // getRequestLogMessage: function (request){
+        //     return "Authorizing payment";
+        // },
+        filterLogMessage: function (message) {
+            return message;
+        }
+    }).call({ order: order, cvn: cvn });
+};
+function checkAuthorizeCodes(returnObject) {
+    if (empty(returnObject.AuthorizationCode)) {
+        throw new Error('Card could not be authorized for order ' + returnObject.OrderID + ' (no authorization code)');
+    } else {
+        switch (returnObject.StatusCode) {
+            case 100:
+            case 104:
+            case 106:
+            case 107:
+            case 108:
+            case 110:
+                switch (returnObject.CCType) {
+                    case 'PP':
+                        returnObject.AVSstreetOK = true;
+                        returnObject.AVSzipOK = true;
+                        returnObject.CVVOK = true;
+                        break;
+                    default:
+                        break;
+                }
+                return returnObject;
+            default:
+                throw new Error('Card could not be authorized for order ' + returnObject.OrderID + ' (authorize failure)');
+        }
+    }
+};
+
+module.exports = {
+    authorize: authorize,
+    checkAuthorizeCodes: checkAuthorizeCodes,
+};

@@ -1,0 +1,115 @@
+<iscontent type="text/html " charset="UTF-8"/>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<iscomment>The "subject" tag contains the mail subject and can contain dynamic information, like the order number.</iscomment>
+<subject><isif condition="${!empty(pdict.MailSubject)}">${pdict.MailSubject}<iselse/><isprint value="${Resource.msg('order.orderconfirmation-email.001','order',null)}" encoding="off"/> <isprint value="${pdict.Order.orderNo}"/></isif></subject>
+<iscomment>
+	The "to" tag contains the email address of the recipient, the "from" tag the email address of the sender. 
+	Each tag is to be specified max. once. Multiple email address can be separated by "," (see RFC2822).
+</iscomment>
+<to>${pdict.Order.customerEmail}</to>
+<from>${dw.system.Site.getCurrent().getCustomPreferenceValue('customerServiceEmail')}</from>
+<head>
+<isinclude template="util/modules"/>
+</head>
+<body>
+	<table width="100%" cellpadding="0" cellspacing="0">
+		<tr>
+			<td align="center" style="background:#e0e0e0;padding:50px 0;">
+				<center>
+					<table style="background:#ffffff;width:670px;">
+						<tr style="padding:0px 20px 0px 20px">
+							<td align="center" style="padding:0px 15px 0px 15px;">
+									<a href="https://www.waringcommercialproducts.com/">
+										<img width="829" src="${URLUtils.httpStatic('/images/mail-header.png')}" style="border:none;"/>
+									</a>
+												<h1 style="color:black;margin-top:7%;font-size:30px;font-weight:bold;text-align:center;">Thanks for your order!</h1>
+													<p style="color:black;font-size:16px;display:inline;line-height:35px">
+													Your Waring product(s) will ship in 5-7 business days. Remember to join our community at 
+													<a style="color:black;font-size:16px;font-weight: bold;display:inline;line-height:35px" href="https://www.waringcommercialproducts.com/">www.waringcommercialproducts.com</a>
+													for recipes and product information. Follow us on 
+													<a style="color:black;font-size:16px;font-weight: bold;display:inline;line-height:35px" href="https://www.instagram.com/waringcommercial/">Instagram</a>
+													and 
+													<a style="color:black;font-size:16px;font-weight: bold;display:inline;line-height:35px" href="https://www.facebook.com/waringcommercial">Facebook @waringcommercial</a>
+													and be sure to 
+													<a style="color:black;color:black;font-size:16px;font-weight: bold;display:inline;line-height:35px" href="https://www.instagram.com/explore/tags/whatareyouwaring/">${Resource.msg('global.hashtag','locale',null)}whatareyouwaring</a>
+													for a chance to be featured on our social media pages.
+													</p>
+													<h1 style="color:black;margin-top:8%;margin-bottom:0px;font-size:21px;font-weight: bold;text-align:center;">Order Confirmation</h1>
+													<p style="color:grey;font-size:16px;display:inline;line-height:35px">Order${Resource.msg('global.hashtag','locale',null)} <isprint value="${pdict.Order.orderNo}"/></p>
+													<p style="color:grey;font-size:16px;display:inline;line-height:35px"></p>
+							</td>
+						</tr>
+						<tr style="height:40px">
+							<td>
+							</td>
+						</tr>
+						<tr>
+							<td style="font-size:12px;font-family:arial;padding:20px 10px;vertical-align:top;">
+								<isemailorderdetails order="${pdict.Order}"/>
+							</td>
+						</tr>
+						<tr style="height:40px">
+							<td>
+							</td>
+						</tr>
+						<tr>
+							<td style="padding-left:20px;padding-right:20px">
+								<img  width="406" style="display:inline;" src="${URLUtils.httpStatic('/images/Order-Confirmation-Image1.png')}" style="border:none;"/>
+								<img  width="406" style="display:inline;" src="${URLUtils.httpStatic('/images/Order-Confirmation-Image2.png')}" style="border:none;"/>
+								<img  width="406" style="display:inline;" src="${URLUtils.httpStatic('/images/Order-Confirmation-Image3.png')}" style="border:none;"/>
+								<img  width="406" style="display:inline;" src="${URLUtils.httpStatic('/images/Order-Confirmation-Image4.png')}" style="border:none;"/>
+							</td>
+						</tr>
+						<tr style="height:50px">
+							<td>
+							</td>
+						</tr>
+						<tr>
+							<td align="center" style="padding:0px 15px 0px 15px;">
+								<h1 style="padding:0 12% 0 12%; color:black;font-size:20px;font-weight:bold;text-align:center">For questions about your order, please contact waring customer service:</h1>
+								<h1 style="margin-bottom:0px;color:black;font-size:21px;font-weight:bold;text-align:center">1-800-492-7464</h1>
+								<h1 style="margin-top:5px;color:black;font-size:21px;font-weight:bold;text-align:center">service@conair.com</h1>
+							</td>
+						</tr>
+						<tr style="height:50px">
+							<td>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:center">
+								<a style="font-weight:bold;font-size: 29px;color:#80A31C;text-decoration: none;" href="https://www.waringcommercialproducts.com/">https://www.waringcommercialproducts.com</a>
+							</td>
+						</tr>
+						<tr style="height:20px">
+							<td>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:center">
+								<a href="https://www.facebook.com/waringcommercial"><img src="${URLUtils.httpStatic('/images/emailConfirmationFacebook.png')}" style="border:none;"/></a>
+								<a href="https://www.instagram.com/waringcommercial/"><img src="${URLUtils.httpStatic('/images/emailConfirmationInstagram.png')}" style="border:none;"/></a>
+								<a href="https://www.youtube.com/channel/UCdf6siuUQ5TuqtBqcbi57vg"><img src="${URLUtils.httpStatic('/images/emailConfirmationYoutube.png')}" style="border:none;"/></a>
+								<a href="https://www.linkedin.com/in/waring-commercial/"><img src="${URLUtils.httpStatic('/images/emailConfirmationLinkedin.png')}" style="border:none;"/></a>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:center">
+								<img src="${URLUtils.httpStatic('/images/emailConfirmationWaringImage.png')}" style="border:none;"/>
+							</td>
+						</tr>
+						<tr style="height:50px">
+							<td>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:center">
+								<img width="669" style="display:block;width:100%" src="${URLUtils.httpStatic('/images/footer_metal.jpg')}" style="border:none;"/>
+							</td>
+						</tr>
+					</table>						
+				</center>
+			</td>
+		</tr>
+	</table>	
+</body>
+</html>

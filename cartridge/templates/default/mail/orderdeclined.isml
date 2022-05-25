@@ -1,0 +1,94 @@
+<iscontent type="text/html" charset="UTF-8"/>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<head>
+<isinclude template="util/modules"/>
+</head>
+<body><table width="100%" cellpadding="0" cellspacing="0">
+	<tr>
+		<td align="center" style="background:#f2f2f2;padding:50px 0;">
+			<center>
+				<table  style="background-color:#ffffff; width:600px; padding:0; border-collapse: collapse;">
+					<tr style="padding:0px 20px 0px 20px">
+							<td align="center" style="padding:0px 15px 0px 15px;">
+									<a href="https://www.waringcommercialproducts.com/">
+										<img width="829" src="${URLUtils.httpStatic('/images/mail-header.png')}" style="border:none;"/>
+									</a>
+							
+						<tr>
+							<td style="font-size:14px;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;padding:20px 10px;padding-bottom:0px;vertical-align:top; color: #4c4c4c;" colspan="2">
+								${"Hi,"}<br>
+								<isprint value="${pdict.Order.billingAddress.fullName}"/><br/>
+							</td>
+						</tr>
+						<tr>
+							<td style="font-size:14px;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;padding:20px 10px;vertical-align:top; color: #4c4c4c;" colspan="2">
+								<p><isprint value="${dw.content.ContentMgr.getContent('kount-declined').custom.body.markup}" encoding="off" /></p>
+							</td>
+						</tr>
+						</td>
+				</tr>
+				<tr>
+					
+				<tr>
+							<td style="padding-left:20px;padding-right:20px">
+								<img  width="406" style="display:inline;" src="${URLUtils.httpStatic('/images/Order-Confirmation-Image1.png')}" style="border:none;"/>
+								<img  width="406" style="display:inline;" src="${URLUtils.httpStatic('/images/Order-Confirmation-Image2.png')}" style="border:none;"/>
+								<img  width="406" style="display:inline;" src="${URLUtils.httpStatic('/images/Order-Confirmation-Image3.png')}" style="border:none;"/>
+								<img  width="406" style="display:inline;" src="${URLUtils.httpStatic('/images/Order-Confirmation-Image4.png')}" style="border:none;"/>
+							</td>
+						</tr>
+						<tr style="height:50px">
+							<td>
+							</td>
+						</tr>
+						<tr>
+							<td align="center" style="padding:0px 15px 0px 15px;">
+								<h1 style="padding:0 12% 0 12%; color:black;font-size:20px;font-weight:bold;text-align:center">For questions, please contact Waring customer service:</h1>
+								<h1 style="margin-bottom:0px;color:black;font-size:21px;font-weight:bold;text-align:center">1-800-492-7464</h1>
+								<h1 style="margin-top:5px;color:black;font-size:21px;font-weight:bold;text-align:center">service@conair.com</h1>
+							</td>
+						</tr>
+						<tr style="height:50px">
+							<td>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:center">
+								<a style="font-weight:bold;font-size: 29px;color:#80A31C;text-decoration: none;" href="https://www.waringcommercialproducts.com/">https://www.waringcommercialproducts.com</a>
+							</td>
+						</tr>
+						<tr style="height:20px">
+							<td>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:center">
+								<a href="https://www.facebook.com/waringcommercial"><img src="${URLUtils.httpStatic('/images/emailConfirmationFacebook.png')}" style="border:none;"/></a>
+								<a href="https://www.instagram.com/waringcommercial/"><img src="${URLUtils.httpStatic('/images/emailConfirmationInstagram.png')}" style="border:none;"/></a>
+								<a href="https://www.youtube.com/channel/UCdf6siuUQ5TuqtBqcbi57vg"><img src="${URLUtils.httpStatic('/images/emailConfirmationYoutube.png')}" style="border:none;"/></a>
+								<a href="https://www.linkedin.com/in/waring-commercial/"><img src="${URLUtils.httpStatic('/images/emailConfirmationLinkedin.png')}" style="border:none;"/></a>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:center">
+								<img src="${URLUtils.httpStatic('/images/emailConfirmationWaringImage.png')}" style="border:none;"/>
+							</td>
+						</tr>
+						<tr style="height:50px">
+							<td>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:center">
+								<img width="669" style="display:block;width:100%" src="${URLUtils.httpStatic('/images/footer_metal.jpg')}" style="border:none;"/>
+							</td>
+						</tr>
+				</table>						
+			</center>
+		</td>
+	</tr>
+</table>	
+					
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+
+ <iscomment> <h1 style="margin-top:200px;">${pdict.me2}</h1> </iscomment>
+<iscomment> <h1>${pdict.m2}</h1> </iscomment>
+<script>
+    this.opener.$('body').trigger('recs-loaded', {});
+    self.close();
+</script>

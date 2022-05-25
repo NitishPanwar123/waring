@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<form xmlns="http://www.demandware.com/xml/form/2008-04-19">
+    <!--Purpose of the product- Home or Business-->
+    <field formid="forPurpose" type="string" mandatory="true" >
+        <options>
+            <option label="checkout.shipment.business" value="Business" />
+            <option label="checkout.shipment.home" value="Home" />
+        </options>
+    </field>
+    <field formid="deliverylocation" label="label.input.addressid" type="string"  mandatory="true"
+    	   max-length="20" missing-error="error.message.required" binding="deliverylocation" range-error="error.message.20orless"/>
+    <field formid="firstName" label="label.input.firstname.profile" type="string" mandatory="true" binding="firstName"
+           max-length="50" missing-error="address.firstname.missing" range-error="error.message.50orless"/>
+    <field formid="lastName" label="label.input.lastname.profile" type="string" mandatory="true" binding="lastName" max-length="50"
+           missing-error="address.lastname.missing" range-error="error.message.50orless"/>
+    <field formid="contactnumber" label="label.input.address1" type="number" mandatory="true" binding="contactnumber" max-length="50"
+           missing-error="address.address1.missing" range-error="error.message.50orless"/>
+    <field formid="Dock" type="string" mandatory="true" >
+        <options>
+            <option label="Yes" value="True" />
+            <option label="No" value="False" />
+        </options>
+    </field>
+    <field formid="acoustic2" label="Click here to receive Waring updates, exclusive promotions and recipes!" type="boolean" mandatory="false" /> 
+       
+</form>

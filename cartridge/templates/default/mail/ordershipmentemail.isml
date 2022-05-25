@@ -1,0 +1,231 @@
+<iscontent type="text/html " charset="UTF-8"/>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<iscomment>The "subject" tag contains the mail subject and can contain dynamic information, like the order number.</iscomment>
+<subject>
+    <iscomment>
+    <isif condition="${!empty(pdict.MailSubject)}">
+        ${pdict.MailSubject}
+    <iselse/>
+        <isprint value="${Resource.msg('order.orderconfirmation-email.001','order',null)}" encoding="off"/>
+        <isprint value="${pdict.Order.orderNo}"/>
+    </isif>
+    </iscomment>
+        <isprint value="${Resource.msg('order.ordershipment-email','order',null)}" encoding="off"/>
+        <isprint value="${pdict.Order.orderNo}"/>
+</subject>
+<iscomment>
+    The "to" tag contains the email address of the recipient, the "from" tag the email address of the sender. 
+    Each tag is to be specified max. once. Multiple email address can be separated by "," (see RFC2822).
+</iscomment>
+<to>${pdict.Order.customerEmail}</to>
+<from>${dw.system.Site.getCurrent().getCustomPreferenceValue('customerServiceEmail')}</from>
+<head>
+<isinclude template="util/modules"/>
+</head>
+<body>
+    <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+            <td align="center" style="background:#e0e0e0;padding:50px 0;">
+                <center>
+                    <table style="background:#ffffff;width:670px;">
+                        <tr style="padding:0px 20px 0px 20px">
+                            <td align="center" style="padding:0px 15px 0px 15px;">
+                                
+                                <a href="https://www.waringcommercialproducts.com/">
+                                    <img width="829" src="${URLUtils.httpStatic('/images/mail-header.png')}" style="border:none;"/>
+                                </a>
+                                    
+                                        
+                                <h1 style="color:black;margin-top:7%;margin-bottom:1%;font-size:30px;font-weight:bold;text-align:center;">Great News!</h1>
+                                            
+                                <h1 style="color:black;margin-bottom:1%;font-size:21px;font-weight: bold;text-align:center;">Your Waring Commercial product is on its way.</h1>
+                                                    
+                                <p style="color:black;font-size:16px;display:inline;line-height:35px">
+                                    
+                                    Remember to join our  community at 
+                                    <a style="color:black;font-size:16px;font-weight: bold;display:inline;line-height:35px" href="https://www.waringcommercialproducts.com/">www.waringcommercialproducts.com</a>
+                                    
+                                        for recipes and product information. Follow us on 
+                                                    
+                                    <a style="color:black;font-size:16px;font-weight: bold;display:inline;line-height:35px" href="https://www.instagram.com/waringcommercial/">Instagram</a>
+                                
+                                        and 
+                                                                            
+                                    <a style="color:black;font-size:16px;font-weight: bold;display:inline;line-height:35px" href="https://www.facebook.com/waringcommercial">Facebook @waringcommercial</a>
+                                                                    
+                                        and be sure to 
+                                    <a style="color:black;color:black;font-size:16px;font-weight: bold;display:inline;line-height:35px" href="https://www.instagram.com/explore/tags/whatareyouwaring/">${Resource.msg('global.hashtag','locale',null)}whatareyouwaring</a>
+                            
+                                    for a chance to be featured on our social media pages.
+                                </p>
+                        
+                            </td>
+                        </tr>
+                        <tr style="height:40px">
+                            <td>
+                            </td>
+                        </tr>
+                        <td align="center">
+                            <iscomment>Loop only fetches single shipment as we don't have multiple shipments</iscomment>
+                            <isloop items="${pdict.Order.shipments}" var="shipment" status="shipmentloopstate">
+                                <isif condition="${shipment.getTrackingNumber()}">
+                                    <a href="${shipment.getTrackingNumber()}" style="width:300px; background: #A9C439; border: 15px solid #A9C439; font-weight: bold; font-size: 22px;  text-align: center; text-decoration: none; display: block; font-weight: 900;">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:black">Track it</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </a>
+                                <iselse/>
+                                    <a href="#" style="width:300px; background: #A9C439; border: 15px solid #A9C439; font-weight: bold; font-size: 22px;  text-align: center; text-decoration: none; display: block; font-weight: 900;">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:black">Track it</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </a>
+                                </isif>
+                            </isloop>
+                        </td>
+                        <tr style="height:40px">
+                            <td>
+                            </td>
+                        </tr>
+                        
+                        <td align="center">
+                            <table style="margin-left:12%">
+                                <tr>
+                                    <td>
+                                        <img style="display:inline;padding-top:20px;padding-right:20px" src="${URLUtils.httpStatic('/images/shipping-order-email-icon.png')}" style="border:none;"/>
+                                    </td>
+                                    <td>
+                                    <p style="font-weight:bold;font-size: 16px;margin-bottom:0px">On the way</p>
+                                    <p style="color:grey;font-size:16px;display:inline;">Order${Resource.msg('global.hashtag','locale',null)} <isprint value="${pdict.Order.orderNo}"/></p>
+                                    <p style="color:grey;font-size:16px;display:inline;line-height:35px" ></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="float:right;padding:20px 35px 0px 0px">
+                                        <img style="display:inline;" src="${URLUtils.httpStatic('/images/shipping-email-address-icon.png')}" style="border:none;"/>
+                                    </td>
+                                    <td>
+                                        <p style="font-weight:bold;font-size: 16px;margin-bottom:5px">Ship To</p>
+<isloop items="${pdict.Order.shipments}" var="shipment" status="shipmentloopstate">
+        <isif condition="${shipment.productLineItems.size() > 0}">
+            <iscomment>Shipment items table</iscomment>
+            <table style="font-size:16px;color: #646464;">
+                
+                <isloop items="${shipment.productLineItems}" var="productLineItem" status="pliloopstate">
+                    <tr>
+                        <iscomment>only show shipping address for first pli in shipment</iscomment>
+                        <isif condition="${pliloopstate.first}">
+                            <isset name="rowSpan" value="${shipment.productLineItems.size()}" scope="page"/>
+                            <td rowspan="${rowSpan.toFixed()}">
+                                <div>
+                                    <iscomment><isminishippingaddress p_shipment="${shipment}" p_editable="${false}" p_showmethod="${false}" p_showpromos="${false}"/></iscomment>
+                                    <isset name="ShippingAddress" value="${shipment.shippingAddress}" scope="page"/>
+                                    <div class="name">
+        
+        <span class="firstname"><isprint value="${ShippingAddress.firstName}"/></span>
+        <span class="lastname"><isprint value="${ShippingAddress.lastName}"/></span>
+        <div class="street">
+            <div class="line1"><isprint value="${ShippingAddress.address1}"/></div>
+            <isif condition="${!empty(ShippingAddress.address2)}">
+                <div class="line2"><isprint value="${ShippingAddress.address2}"/></div>
+            </isif>
+        </div><!-- END:street -->
+        <div class="location">
+            <isif condition="${ShippingAddress.city != null}">
+                <span class="city"><isprint value="${ShippingAddress.city}"/><span class="statedivider">,&nbsp;</span></span>
+            </isif>
+            <span class="state"><isprint value="${ShippingAddress.stateCode}"/>&nbsp;</span>
+            <span class="zip"><isprint value="${ShippingAddress.postalCode}"/></span>
+        </div><!-- END:location -->
+        <div class="country"><isprint value="${Resource.msg(('country.'+ShippingAddress.countryCode).toLowerCase(), 'forms', null)}"/></div>
+        
+        
+        <div class="phone"><isprint value="${ShippingAddress.phone}"/></div>
+    </div><!-- END:name -->
+                                </div>
+                                
+                                
+                            </td>
+                        </isif>
+                    </tr>
+                </isloop>
+            </table>
+        </isif>
+    </isloop>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <tr style="height:40px">
+                            <td>
+                            </td>
+                        </tr>
+                        <iscomment>
+                        <tr>
+                            <td style="font-size:12px;font-family:arial;padding:20px 10px;vertical-align:top;">
+                                <isemailorderdetails order="${pdict.Order}"/>
+                            </td>
+                        </tr>
+                        </iscomment>
+                        <tr style="height:40px">
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left:20px;padding-right:20px">
+                                <img width="406" style="display:inline;" src="${URLUtils.httpStatic('/images/Order-Confirmation-Image1.png')}" style="border:none;"/>
+                                <img width="406" style="display:inline;" src="${URLUtils.httpStatic('/images/Order-Confirmation-Image2.png')}" style="border:none;"/>
+                                <img width="406" style="display:inline;" src="${URLUtils.httpStatic('/images/Order-Confirmation-Image3.png')}" style="border:none;"/>
+                                <img width="406" style="display:inline;" src="${URLUtils.httpStatic('/images/Order-Confirmation-Image4.png')}" style="border:none;"/>
+                            </td>
+                        </tr>
+                        <tr style="height:50px">
+							<td>
+							</td>
+						</tr>
+						<tr>
+							<td align="center" style="padding:0px 15px 0px 15px;">
+								<h1 style="padding:0 12% 0 12%; color:black;font-size:21px;font-weight:bold;text-align:center">For questions about your order, please contact waring customer service:</h1>
+								<h1 style="margin-bottom:0px;color:black;font-size:21px;font-weight:bold;text-align:center">1-800-492-7464</h1>
+								<h1 style="margin-top:5px;color:black;font-size:21px;font-weight:bold;text-align:center">service@conair.com</h1>
+							</td>
+						</tr>
+						<tr style="height:50px">
+							<td>
+							</td>
+						</tr>
+                        <tr>
+                            <td style="text-align:center">
+                                <a style="font-weight:bold;font-size: 29px;color:#80A31C;text-decoration: none;" href="https://www.waringcommercialproducts.com/">https://www.waringcommercialproducts.com</a>
+                            </td>
+                        </tr>
+                        <tr style="height:20px">
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:center">
+                                <a href="https://www.facebook.com/waringcommercial"><img src="${URLUtils.httpStatic('/images/emailConfirmationFacebook.png')}" style="border:none;"/></a>
+                                <a href="https://www.instagram.com/waringcommercial/"><img src="${URLUtils.httpStatic('/images/emailConfirmationInstagram.png')}" style="border:none;"/></a>
+                                <a href="https://www.youtube.com/channel/UCdf6siuUQ5TuqtBqcbi57vg"><img src="${URLUtils.httpStatic('/images/emailConfirmationYoutube.png')}" style="border:none;"/></a>
+                                <a href="https://www.linkedin.com/in/waring-commercial/"><img src="${URLUtils.httpStatic('/images/emailConfirmationLinkedin.png')}" style="border:none;"/></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:center">
+                                <img src="${URLUtils.httpStatic('/images/emailConfirmationWaringImage.png')}" style="border:none;"/>
+                            </td>
+                        </tr>
+                        <tr style="height:50px">
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:center">
+                                <img height="37" width="669px" style="display:block;width:100%" src="${URLUtils.httpStatic('/images/footer_metal.jpg')}" style="border:none;"/>
+                            </td>
+                        </tr>
+                    </table>                      
+                </center>
+            </td>
+        </tr>
+    </table>  
+                    
+</body>
+</html>

@@ -1,0 +1,29 @@
+.js {
+	.loader {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 0%;
+		height: 0%;
+		display: none;
+
+	}
+	.loader-bg {
+		position: absolute;
+		width: 0%;
+		height: 0%;
+		background-color: $white;
+		opacity: 0.7;
+		display:none;
+	}
+	.loader-indicator {
+		z-index: 10;
+		position: absolute;
+		left: 0%;
+		top: 0%;
+		width: 4px;
+		height: 0px;
+		background: url("../images/loading-small.gif") no-repeat;
+		display:none;
+	}
+}

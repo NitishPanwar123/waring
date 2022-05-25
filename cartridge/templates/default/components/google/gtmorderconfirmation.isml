@@ -1,0 +1,21 @@
+<!--- TEMPLATENAME: gtmconfirmation.isml --->
+<script>
+(function(){
+	var GTMproducts=[];<isloop var="pli" items="${pdict.Order.allProductLineItems}"><isinclude template="components/google/gtmpli"/></isloop>
+	var dataLayer = window.dataLayer || [];
+	dataLayer.push({
+		'event':'purchase',
+		'ecommerce': {
+			'purchase': {
+				'actionField': {
+					'id': "${pdict.Order.orderNo}",
+					'affiliation': "${dw.system.Site.current.name}",
+					'revenue': ${pdict.Order.totalGrossPrice.value.toFixed(2)},
+					'shipping': ${pdict.Order.adjustedShippingTotalPrice.value.toFixed(2)},
+					'tax': ${pdict.Order.totalTax.value.toFixed(2)}
+				},
+				'products': GTMproducts
+			}
+		}
+	});
+})();</script>

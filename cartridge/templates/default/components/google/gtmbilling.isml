@@ -1,0 +1,12 @@
+<!--- TEMPLATENAME: gtmcheckoutlogin.isml --->
+<script>
+(function(){
+	var GTMproducts=[];
+	<isloop var="pli" items="${pdict.Basket.allProductLineItems}"><isinclude template="components/google/gtmpli"/></isloop>
+	dataLayer.push({
+		'event': 'checkout',
+		'ecommerce': { 'checkout': {
+			'actionField': {'step': 3},
+			'products': GTMproducts
+	}}});
+})();</script>

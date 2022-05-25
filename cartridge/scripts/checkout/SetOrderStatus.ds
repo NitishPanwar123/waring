@@ -1,0 +1,29 @@
+/**
+* Set the order export status to EXPORT_STATUS_READY
+*
+* @input Order : dw.order.Order The order.
+* @input KountOrderStatus : String
+*/
+importPackage( dw.order );
+
+function execute( pdict : PipelineDictionary ) : Number
+{
+    // read pipeline dictionary input parameter
+    var order : Order = pdict.Order;
+
+    // get Kount order status result
+    var kountOrderStatus : String = pdict.KountOrderStatus;
+    
+    // Special case if Kount order status is HOLD
+    if( !empty( kountOrderStatus ) && kountOrderStatus == 'APPROVED' && order.getExportStatus().getDisplayValue() != 'EXPORTED' ) {
+		order.setExportStatus(Order.EXPORT_STATUS_READY);
+   		order.setConfirmationStatus(Order.CONFIRMATION_STATUS_CONFIRMED);    	
+    } else if( !empty( kountOrderStatus ) && ( kountOrderStatus == 'DECLINED' || kountOrderStatus == 'HOLD' ) ) {
+    	order.setExportStatus(Order.EXPORT_STATUS_NOTEXPORTED);
+    } else {
+		// set the export status to EXPORT_STATUS_READY
+		order.setExportStatus(Order.EXPORT_STATUS_READY);
+   		order.setConfirmationStatus(Order.CONFIRMATION_STATUS_CONFIRMED);    	
+    }
+   	return PIPELET_NEXT;
+}

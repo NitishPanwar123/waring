@@ -302,7 +302,7 @@ input[id="dwfrm_cart_forPurpose"]{
     		margin-bottom: 452px;
 		}
 	}
-	@media only screen and (max-width:550px){
+	/* @media only screen and (max-width:550px){
 		
 		.item-quantity {
 			margin-left: 7%;
@@ -315,7 +315,7 @@ input[id="dwfrm_cart_forPurpose"]{
 			padding: 3% 3% 3% 5%;
 			text-align: center !important;
 		}
-	}
+	} */
 	@media only screen and (max-width:400px){
 		.primaryButton {
     		width: 100px;
@@ -539,11 +539,6 @@ input[id="dwfrm_cart_forPurpose"]{
 	@media only screen and (min-width:320px) and (max-width:767px){
 		.acoustic{
 			margin-left:0vw;
-		}
-	}
-	@media only screen and (min-width:470px) and (max-width:767px){
-		.item-quantity{
-			position: absolute;
 		}
 	}
 	

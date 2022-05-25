@@ -543,7 +543,7 @@ input[id="dwfrm_cart_forPurpose"]{
 	}
 	@media only screen and (min-width:470px) and (max-width:767px){
 		.item-quantity{
-			position: absolute;
+			
 		}
 	}
 	

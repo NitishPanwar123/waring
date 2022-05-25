@@ -541,11 +541,7 @@ input[id="dwfrm_cart_forPurpose"]{
 			margin-left:0vw;
 		}
 	}
-	@media only screen and (min-width:470px) and (max-width:767px){
-		.item-quantity{
-			position: absolute;
-		}
-	}
+	@media only screen and (min-width:320px) and (max-width:767px)
 	
 </style>
 <input type="hidden" value="${dw.web.URLUtils.https('Getpaypaltoken-Show')}" id="paypal_redirect"/>

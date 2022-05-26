@@ -287,7 +287,7 @@ input[id="dwfrm_cart_forPurpose"]{
 
 		}
 	}
-	@media only screen and (min-width:551px) and (max-width:767px){
+	@media only screen and (min-width:551px) and (max-width:768px){
 		.item-total {
 			padding: 3% 3% 3% 0%;
 			text-align: center !important;
@@ -381,7 +381,7 @@ input[id="dwfrm_cart_forPurpose"]{
 			margin-left: -8.5vw;
 		}
 	}
-	@media only screen and (min-width:470px) and (max-width:767px){
+	@media only screen and (min-width:470px) and (max-width:768px){
 		/* .tbodyBorder{
 			height: auto;
 		} */

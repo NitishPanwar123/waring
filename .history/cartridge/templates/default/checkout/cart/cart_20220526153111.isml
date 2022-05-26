@@ -292,7 +292,7 @@ input[id="dwfrm_cart_forPurpose"]{
 			padding: 3% 3% 3% 0%;
 			text-align: center !important;
 			font-weight: 1;
-			/* max-width: 150px !important; */
+			max-width: 150px !important;
 			margin-left: 5%;
 		}
 		.item-quantity {
@@ -304,6 +304,7 @@ input[id="dwfrm_cart_forPurpose"]{
 		}
 	}
 	@media only screen and (max-width:550px){
+		
 		.item-quantity {
 			margin-left: 7%;
 		}
@@ -361,13 +362,13 @@ input[id="dwfrm_cart_forPurpose"]{
 		input[id="dwfrm_cart_contactnumber"]{
 				width: 40vw;
 			}
-		/* .prmBtn{
+		.prmBtn{
 			padding-right: 21vw;
-		} */
-		/* .secondaryButton{
+		}
+		.secondaryButton{
 			    margin-left: 18vw;
 				margin-right: 40vw;
-		} */
+		}
 		.extraSpace{
 			height:4vw;
 		}
@@ -377,11 +378,8 @@ input[id="dwfrm_cart_forPurpose"]{
 		.form-indent{
 			width: 52vw;
 		}
-		.acoustic{
-			margin-left: -8.5vw;
-		}
 	}
-	@media only screen and (min-width:470px) and (max-width:767px){
+	@media only screen and (min-width:470px) and (max-width:768px){
 		/* .tbodyBorder{
 			height: auto;
 		} */
@@ -396,10 +394,6 @@ input[id="dwfrm_cart_forPurpose"]{
 			/* position:absolute; */
 			    left: 38vw;
     			right: 0vw;
-		}
-		.item-total{
-				text-align: right !important;
-    			padding-right: 4vw !important;
 		}
 		/* .item-total{
 				position:absolute;
@@ -420,23 +414,17 @@ input[id="dwfrm_cart_forPurpose"]{
 				width: 27vw;
 			}
 		.acoustic{
-			margin-left: 0vw;
-			padding-top: 4vw;
+			margin-left: 1vw;
 		}
 		.extraSpace{
 			height:10vw;
 		}
 		.form-indent{
-	    	/* width: 70vw; */
-			    width: 68vw;
-    			margin-left: 1.5vw;
+	    	width: 70vw;
 		}
-		.radio1{
-			margin-left: -2% !important;
-		}
-		.para + div{
-			margin-left: 1vw;
-		}
+						.radio1{
+	margin-left: -2% !important;
+}
 
 	}
 	@media only screen and (min-width:401px) and (max-width:470px){
@@ -467,7 +455,6 @@ input[id="dwfrm_cart_forPurpose"]{
 			}
 		.acoustic{
 			margin-left: 1vw;
-			padding-top: 4vw;
 		}
 		.extraSpace{
 			height:10vw;
@@ -503,12 +490,9 @@ input[id="dwfrm_cart_forPurpose"]{
 		.form-indent {
     		width: 69vw;
 		}
-		.radio1{
-			margin-left: -8% !important;
-		}
-		.para + div{
-			margin-left: -2%;
-		}
+				.radio1{
+	margin-left: -8% !important;
+}
 	}
 	@media only screen and (min-width:320px) and (max-width:400px){
 		/* .tbodyBorder{
@@ -535,7 +519,6 @@ input[id="dwfrm_cart_forPurpose"]{
 			}
 		.acoustic{
 				    margin-left: 1vw;
-					padding-top: 4vw;
 			}
 		/* .customForm{
     				width: 20em;
@@ -574,9 +557,8 @@ input[id="dwfrm_cart_forPurpose"]{
 		.radio1{
 			margin-left: -4% !important;
 		}
-		.para + div{
-			margin-left: -2%;
-		}
+
+		
 
 	}
 	@media only screen and (min-width:320px) and (max-width:767px){
@@ -587,7 +569,6 @@ input[id="dwfrm_cart_forPurpose"]{
 	@media only screen and (min-width:470px) and (max-width:767px){
 		.item-quantity{
 			position: absolute;
-			left: 44vw;
 		}
 	}
 

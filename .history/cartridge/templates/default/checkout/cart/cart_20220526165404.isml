@@ -381,7 +381,7 @@ input[id="dwfrm_cart_forPurpose"]{
 			margin-left: -8.5vw;
 		}
 	}
-	@media only screen and (min-width:470px) and (max-width:767px){
+	@media only screen and (min-width:470px) and (max-width:768px){
 		/* .tbodyBorder{
 			height: auto;
 		} */
@@ -1404,7 +1404,7 @@ overflow: hidden;text-overflow: ellipsis;">${Resource.msg('global.notapplied','l
                                                 <isinputfield formfield="${pdict.CurrentForms.cart.Dock}" type="radio"/>
                                                 </div>
                                                 <div class="acoustic">
-                                                <isinputfield formfield="${pdict.CurrentForms.cart.acoustic2}" type="checkbox"/>
+                                                <isinputfield formfield="${pdict.CurrentForms.cart.acoustic}" type="checkbox"/>
                                                 </div>
                                                 </fieldset>
         						</div>

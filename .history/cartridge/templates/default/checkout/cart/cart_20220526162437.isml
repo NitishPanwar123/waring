@@ -377,11 +377,8 @@ input[id="dwfrm_cart_forPurpose"]{
 		.form-indent{
 			width: 52vw;
 		}
-		.acoustic{
-			margin-left: -8.5vw;
-		}
 	}
-	@media only screen and (min-width:470px) and (max-width:767px){
+	@media only screen and (min-width:470px) and (max-width:768px){
 		/* .tbodyBorder{
 			height: auto;
 		} */
@@ -396,10 +393,6 @@ input[id="dwfrm_cart_forPurpose"]{
 			/* position:absolute; */
 			    left: 38vw;
     			right: 0vw;
-		}
-		.item-total{
-				text-align: right !important;
-    			padding-right: 4vw !important;
 		}
 		/* .item-total{
 				position:absolute;
@@ -420,8 +413,7 @@ input[id="dwfrm_cart_forPurpose"]{
 				width: 27vw;
 			}
 		.acoustic{
-			margin-left: 0vw;
-			padding-top: 4vw;
+			margin-left: 1vw;
 		}
 		.extraSpace{
 			height:10vw;
@@ -429,7 +421,7 @@ input[id="dwfrm_cart_forPurpose"]{
 		.form-indent{
 	    	/* width: 70vw; */
 			    width: 68vw;
-    			margin-left: 1.5vw;
+    			margin-left: 2.5vw;
 		}
 		.radio1{
 			margin-left: -2% !important;
@@ -587,7 +579,6 @@ input[id="dwfrm_cart_forPurpose"]{
 	@media only screen and (min-width:470px) and (max-width:767px){
 		.item-quantity{
 			position: absolute;
-			left: 44vw;
 		}
 	}
 

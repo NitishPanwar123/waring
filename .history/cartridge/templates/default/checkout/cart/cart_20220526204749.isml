@@ -84,7 +84,7 @@ input[id="dwfrm_cart_forPurpose"]{
 }
 .para2{
 	text-align: center;
-    padding-top: 2vw;
+    padding-top: 3vw;
     font-size: 15px;
 }
 
@@ -1665,7 +1665,7 @@ overflow: hidden;text-overflow: ellipsis;">${Resource.msg('global.notapplied','l
 				</fieldset>
 			</form>
 			<iscontentasset aid="paymentLogoAsset"/>
-			<p class="para2">Or continue with</p>
+			<p>Or continue with</p>
 		</div>
 
 		<iscomment> Paypal button for checkout  </iscomment>

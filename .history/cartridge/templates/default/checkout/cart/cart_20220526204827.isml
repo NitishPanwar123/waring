@@ -84,7 +84,7 @@ input[id="dwfrm_cart_forPurpose"]{
 }
 .para2{
 	text-align: center;
-    padding-top: 2vw;
+    padding-top: 3vw;
     font-size: 15px;
 }
 

@@ -79,14 +79,6 @@ input[id="dwfrm_cart_forPurpose"]{
 .item-details{
 	    width: 18vw;
 }
-.paymentLogo{
-	margin-top: 2vw;
-}
-.para2{
-	text-align: center;
-    padding-top: 2vw;
-    font-size: 15px;
-}
 
 
 
@@ -1619,9 +1611,6 @@ overflow: hidden;text-overflow: ellipsis;">${Resource.msg('global.notapplied','l
 				</iscomment>
 				</fieldset>
 			</form>
-			
-			<iscontentasset aid="paymentLogoAsset"/>
-			<p class="para2">Or continue with</p>
 
 		</div>
 		
@@ -1664,8 +1653,13 @@ overflow: hidden;text-overflow: ellipsis;">${Resource.msg('global.notapplied','l
 				</iscomment>
 				</fieldset>
 			</form>
-			<iscontentasset aid="paymentLogoAsset"/>
-			<p class="para2">Or continue with</p>
+
+		</div>
+
+		<div>
+			<img class="paypal-logo-img" src="${URLUtils.staticURL('/images/credit-cards-american-express.jpeg')}" alt="American Express">
+			<img class="paypal-logo-img" src="${URLUtils.staticURL('/images/credit-cards-mastercard.jpeg')}" alt="Mastercard">
+			<img class="paypal-logo-img" src="${URLUtils.staticURL('/images/credit-cards-visa.jpeg')}" alt="Visa">
 		</div>
 
 		<iscomment> Paypal button for checkout  </iscomment>
@@ -1692,7 +1686,7 @@ overflow: hidden;text-overflow: ellipsis;">${Resource.msg('global.notapplied','l
 	<iscomment> Paypal Checkout Button </iscomment>
 	<isif condition="${Boolean(dw.system.Site.getCurrent().getCustomPreferenceValue('PP_ShowExpressCheckoutButtonOnCart'))}">
 		<isif condition="${product.name != null}">
-			<div class="checkoutbtn1 paypal-button" style="top: 602px;  width: 25%;"onclick="showModalPopUp()">
+			<div class="checkoutbtn1 paypal-button" style="top: 448px;  width: 25%;"onclick="showModalPopUp()">
 				<span class="paypal-logo" style="padding-left: 90px;">
 					<img class="paypal-logo-img" src="${URLUtils.staticURL('/images/paypal-logo.png')}" alt="Paypal logo">
 					<i class="pay">Pay</i><i class="pal">Pal</i>
@@ -1700,7 +1694,7 @@ overflow: hidden;text-overflow: ellipsis;">${Resource.msg('global.notapplied','l
 				<iscomment> <span class="paypal-button-title">Check out</span> </iscomment>
 			</div>
 
-			<div class="checkoutbtn2 paypal-button" style="top: 12px;" onclick="showModalPopUp()">
+			<div class="checkoutbtn2 paypal-button" style="top: 27px;" onclick="showModalPopUp()">
 				<div class="mobilePaypalbtn" style="padding-left: 45%;">
 					<span class="paypal-logo">
 					<img class="paypal-logo-img" src="${URLUtils.staticURL('/images/paypal-logo.png')}" alt="Paypal logo">
@@ -1718,6 +1712,11 @@ overflow: hidden;text-overflow: ellipsis;">${Resource.msg('global.notapplied','l
 	</div>
 </isdecorate>
 
+<div>
+			<img class="paypal-logo-img" src="${URLUtils.staticURL('/images/credit-cards-american-express.jpeg')}" alt="American Express">
+			<img class="paypal-logo-img" src="${URLUtils.staticURL('/images/credit-cards-mastercard.jpeg')}" alt="Mastercard">
+			<img class="paypal-logo-img" src="${URLUtils.staticURL('/images/credit-cards-visa.jpeg')}" alt="Visa">
+		</div>
 <iscomment> AjexDiv </iscomment>
 <div id="billing_Demo" style="display:none">
 </div>

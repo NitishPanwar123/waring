@@ -79,14 +79,6 @@ input[id="dwfrm_cart_forPurpose"]{
 .item-details{
 	    width: 18vw;
 }
-.paymentLogo{
-	margin-top: 2vw;
-}
-.para2{
-	text-align: center;
-    padding-top: 2vw;
-    font-size: 15px;
-}
 
 
 
@@ -296,7 +288,7 @@ input[id="dwfrm_cart_forPurpose"]{
 
 		}
 	}
-	@media only screen and (min-width:551px) and (max-width:768px){
+	@media only screen and (min-width:551px) and (max-width:767px){
 		.item-total {
 			padding: 3% 3% 3% 0%;
 			text-align: center !important;
@@ -445,9 +437,6 @@ input[id="dwfrm_cart_forPurpose"]{
 		.para + div{
 			margin-left: 1vw;
 		}
-		.checkoutbtn2{
-			    padding-left: 0vw;
-		}
 	}
 	@media only screen and (min-width:401px) and (max-width:470px){
 		/* .tbodyBorder{
@@ -519,9 +508,6 @@ input[id="dwfrm_cart_forPurpose"]{
 		.para + div{
 			margin-left: -2%;
 		}
-		.mobilePaypalbtn{
-			padding-left: 34% !important;
-		}
 	}
 	@media only screen and (min-width:320px) and (max-width:400px){
 		/* .tbodyBorder{
@@ -589,9 +575,6 @@ input[id="dwfrm_cart_forPurpose"]{
 		}
 		.para + div{
 			margin-left: -2%;
-		}
-		.mobilePaypalbtn{
-			padding-left: 33% !important;
 		}
 
 	}
@@ -1587,7 +1570,7 @@ overflow: hidden;text-overflow: ellipsis;">${Resource.msg('global.notapplied','l
 			<form action="${URLUtils.httpsContinue()}" method="post" name="${pdict.CurrentForms.cart.dynamicHtmlName}" id="checkout-form">
 				<fieldset>
 				<isif condition="${pdict.Basket.custom.PaypalAddressData == null}">
-
+				
 					<isif condition="${enableCheckout}">
 						<button class="checkoutButton" onclick="MineSubmit()" type="submit" value="${Resource.msg('global.checkout','locale',null)}" name="${pdict.CurrentForms.cart.checkoutCart.htmlName}">
 							${Resource.msg('global.checkout','locale',null)}
@@ -1619,14 +1602,8 @@ overflow: hidden;text-overflow: ellipsis;">${Resource.msg('global.notapplied','l
 				</iscomment>
 				</fieldset>
 			</form>
-			
-			<iscontentasset aid="paymentLogoAsset"/>
-			<p class="para2">Or continue with</p>
 
 		</div>
-		
-		
-
 		<div class="checkoutbtn2">
 
 			<iscomment>continue shop url is a non-secure but checkout needs a secure and that is why separate forms!</iscomment>
@@ -1664,9 +1641,10 @@ overflow: hidden;text-overflow: ellipsis;">${Resource.msg('global.notapplied','l
 				</iscomment>
 				</fieldset>
 			</form>
-			<iscontentasset aid="paymentLogoAsset"/>
-			<p class="para2">Or continue with</p>
+
 		</div>
+
+		
 
 		<iscomment> Paypal button for checkout  </iscomment>
 		<isif condition="${pdict.Basket.custom.PaypalAddressData}">
@@ -1692,7 +1670,7 @@ overflow: hidden;text-overflow: ellipsis;">${Resource.msg('global.notapplied','l
 	<iscomment> Paypal Checkout Button </iscomment>
 	<isif condition="${Boolean(dw.system.Site.getCurrent().getCustomPreferenceValue('PP_ShowExpressCheckoutButtonOnCart'))}">
 		<isif condition="${product.name != null}">
-			<div class="checkoutbtn1 paypal-button" style="top: 602px;  width: 25%;"onclick="showModalPopUp()">
+			<div class="checkoutbtn1 paypal-button" style="top: 448px;  width: 25%;"onclick="showModalPopUp()">
 				<span class="paypal-logo" style="padding-left: 90px;">
 					<img class="paypal-logo-img" src="${URLUtils.staticURL('/images/paypal-logo.png')}" alt="Paypal logo">
 					<i class="pay">Pay</i><i class="pal">Pal</i>
@@ -1700,13 +1678,13 @@ overflow: hidden;text-overflow: ellipsis;">${Resource.msg('global.notapplied','l
 				<iscomment> <span class="paypal-button-title">Check out</span> </iscomment>
 			</div>
 
-			<div class="checkoutbtn2 paypal-button" style="top: 12px;" onclick="showModalPopUp()">
-				<div class="mobilePaypalbtn" style="padding-left: 45%;">
+			<div class="checkoutbtn2 paypal-button" style="top: 27px;" onclick="showModalPopUp()">
+				<div style="padding-left: 45%;">
 					<span class="paypal-logo">
 					<img class="paypal-logo-img" src="${URLUtils.staticURL('/images/paypal-logo.png')}" alt="Paypal logo">
 						<i class="pay">Pay</i><i class="pal">Pal</i>
 					</span>
-					<iscomment> <span class="paypal-button-title">Check out</span> </iscomment>
+					<span class="paypal-button-title">Check out</span>
 				</div>
 			</div>
 		</isif>
@@ -1717,7 +1695,6 @@ overflow: hidden;text-overflow: ellipsis;">${Resource.msg('global.notapplied','l
 	<div class="extraSpace">
 	</div>
 </isdecorate>
-
 <iscomment> AjexDiv </iscomment>
 <div id="billing_Demo" style="display:none">
 </div>

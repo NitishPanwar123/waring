@@ -82,11 +82,6 @@ input[id="dwfrm_cart_forPurpose"]{
 .paymentLogo{
 	margin-top: 2vw;
 }
-.para2{
-	text-align: center;
-    padding-top: 2vw;
-    font-size: 15px;
-}
 
 
 
@@ -1621,7 +1616,7 @@ overflow: hidden;text-overflow: ellipsis;">${Resource.msg('global.notapplied','l
 			</form>
 			
 			<iscontentasset aid="paymentLogoAsset"/>
-			<p class="para2">Or continue with</p>
+			<p>Or continue with</p>
 
 		</div>
 		
@@ -1665,7 +1660,7 @@ overflow: hidden;text-overflow: ellipsis;">${Resource.msg('global.notapplied','l
 				</fieldset>
 			</form>
 			<iscontentasset aid="paymentLogoAsset"/>
-			<p class="para2">Or continue with</p>
+			<p>Or continue with</p>
 		</div>
 
 		<iscomment> Paypal button for checkout  </iscomment>
@@ -1700,7 +1695,7 @@ overflow: hidden;text-overflow: ellipsis;">${Resource.msg('global.notapplied','l
 				<iscomment> <span class="paypal-button-title">Check out</span> </iscomment>
 			</div>
 
-			<div class="checkoutbtn2 paypal-button" style="top: 12px;" onclick="showModalPopUp()">
+			<div class="checkoutbtn2 paypal-button" style="top: 27px;" onclick="showModalPopUp()">
 				<div class="mobilePaypalbtn" style="padding-left: 45%;">
 					<span class="paypal-logo">
 					<img class="paypal-logo-img" src="${URLUtils.staticURL('/images/paypal-logo.png')}" alt="Paypal logo">
